@@ -6,13 +6,30 @@
  */
 
 #include "../includes/Buffer.h"
+#include <stdexcept>
+using namespace std;
 
+Buffer::Buffer(const char* const filePath, unsigned int size)
+: _size(size), _stream(filePath) {
+	//Need at least one char and '\'
+	if (size < 2)
+		throw new invalid_argument("size");
 
-Buffer::Buffer() {
-	// TODO Auto-generated constructor stub
-
+	if (!this->_stream)
+		throw new invalid_argument("filePath");
 }
 
-Buffer::~Buffer() {
-	// TODO Auto-generated destructor stub
+char const* Buffer::read()
+{
+	auto result = new char[this->_size];
+
+	this->_stream.read(result, this->_size-1);
+	result[this->_stream.gcount()] = '\0';
+
+	return result;
+}
+
+bool Buffer::isEof() const
+{
+	return this->_stream.eof();
 }
