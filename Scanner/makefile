@@ -14,9 +14,8 @@ BINDIRTEST = debug
 
 
 AUTOMATDIR = ../Automat
-
 BUFFERDIR = ../Buffer
-
+COMMONDIR = ../Common
 SYMBOLTABLEDIR = ../Symboltable
 
 
@@ -61,15 +60,14 @@ $(OBJDIR)/%.o :  $(SRCDIR)/%.cpp $(HEADERDIR)/%.h
 # $< erste abhaengigkeit
 
 
-ScannerTest: $(SRCDIR)/TestScanner.cpp $(HEADERDIR)/Scanner.h
-	g++ -g  -c -Wall src/TestScanner.cpp -o $(BINDIRTEST)/TestScanner.o  
-	g++ -g $(BINDIRTEST)/TestScanner.o $(OBJDIR)/*.o $(AUTOMATDIR)/$(OBJDIR)/*.o $(BUFFERDIR)/$(OBJDIR)/*.o $(SYMBOLTABLEDIR)/$(OBJDIR)/*.o -o $(BINDIRTEST)/ScannerTest
+ScannerTest: $(SRCDIR)/TestScanner.cpp $(HEADERDIR)/Scanner.h $(OBJS)
+	g++ -g  -c -Wall $(<) -o $(BINDIRTEST)/TestScanner.o  
+	g++ -g $(BINDIRTEST)/TestScanner.o $(OBJDIR)/*.o $(AUTOMATDIR)/$(OBJDIR)/*.o $(BUFFERDIR)/$(OBJDIR)/*.o $(COMMONDIR)/$(OBJDIR)/*.o $(SYMBOLTABLEDIR)/$(OBJDIR)/*.o -o $(BINDIRTEST)/ScannerTest.out
 
 # loeschen aller files im verzeichnis $(OBJDIR) und $(BINDIRTEST) und neu erstellen
 
 cleanScanner:
 	rm -rf $(OBJDIR)/*.o
 	rm -rf $(BINDIRTEST)/*
-	$(MAKE) makeTestScanner
 
 

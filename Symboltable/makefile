@@ -49,7 +49,7 @@ OBJS = $(OBJDIR)/Symboltable.o \
 # Variante mit guten Makefile-Kenntnissen
 
 makeTestSymboltable: SymboltableTarget TestSymboltableTarget
-	g++ -g $(OBJDIR)/*.o $(BINDIRTEST)/TestSymboltable.o  -o $(BINDIRTEST)/SymboltableTest
+	g++ -g $(OBJDIR)/*.o $(BINDIRTEST)/TestSymboltable.o  -o $(BINDIRTEST)/SymboltableTest.out
 
 SymboltableTarget: $(OBJS)
 
@@ -73,7 +73,6 @@ TestSymboltableTarget: $(SRCDIR)/TestSymboltable.cpp $(HEADERDIR)/Symboltable.h
 cleanSymboltable:
 	rm -rf $(OBJDIR)/*.o
 	rm -rf $(BINDIRTEST)/*
-	$(MAKE) makeTestSymboltable
 	
 	
 	

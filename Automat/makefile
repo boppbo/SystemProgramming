@@ -8,7 +8,7 @@
 # -o --> name des output-files
 
 makeTestAutomat: AutomatTarget TestAutomatTarget  
-	g++ -g objs/Automat.o debug/TestAutomat.o -o debug/AutomatTest
+	g++ -g objs/Automat.o debug/TestAutomat.o -o debug/AutomatTest.out
 	
 
 # compilieren des Files Automat.cpp zu Automat.o, 
@@ -33,7 +33,6 @@ TestAutomatTarget :  src/TestAutomat.cpp includes/Automat.h
 cleanAutomat:
 	rm -f objs/*.o
 	rm -f debug/*
-	$(MAKE) makeTestAutomat
 	
 	
 # dieses Target wird vom makefile des Gesamtprojekts verwendet

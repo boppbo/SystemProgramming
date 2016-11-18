@@ -1,45 +1,22 @@
-#
-#	baut das komplette Scanner Projekt
-#
-OBJDIR = objs
+#!/usr/bin/make -f
+include Constants.mk
+# $@ name des object files = name auf der linken Seite vom Doppelpunkt des Targets
+# $< erste abhaengigkeit, $< das erste Element in der Liste der Abhaengigkeiten
+# $@ --> linke Seite vom Doppelpunkt
+# $^ --> rechte Seite vom Doppelpunkt
 
-AUTOMATDIR = Automat
+SUBDIRS = $(AUTOMATDIR) $(BUFFERDIR) $(COMMONDIR) $(SYMBOLTABLEDIR) $(SCANNERDIR)
+SUBDIRSCLEAN = $(addprefix clean,$(SUBDIRS))
+.PHONY: all clean $(SUBDIRS) $(SUBDIRSCLEAN)
 
-BUFFERDIR = Buffer
+all: $(SUBDIRS)
+$(SUBDIRS): Common
+	$(shell mkdir -p $(@)/$(OBJDIR))
+	$(shell mkdir -p $(@)/$(BINDIRTEST))
+	$(MAKE) -C $(@) $(if $(findstring Scanner,$@), makeTestScanner, $(@)OBJTarget)
 
-SYMBOLTABLEDIR = Symboltable
+Scanner: Automat Buffer Symboltable
 
-SCANNERDIR = Scanner
-
-
-
-all:	automatOBJs bufferOBJs symboltableOBJs scanner  
-	@echo "target all"
-
-	
-# rm 	remove
-# -f	force, ohne nachfragen
-clean:
-	rm -f $(AUTOMATDIR)/$(OBJDIR)/*.o
-	rm -f $(BUFFERDIR)/$(OBJDIR)/*.o
-	rm -f $(SYMBOLTABLEDIR)/$(OBJDIR)/*.o
-	rm -f $(SCANNERDIR)/$(OBJDIR)/*.o
-	rm -f $(SCANNERDIR)/debug/*
-	
-
-automatOBJs:
-	$(MAKE) -C $(AUTOMATDIR) AutomatOBJTarget
-	
-	
-bufferOBJs:
-	$(MAKE) -C $(BUFFERDIR) BufferOBJTarget
-
-	
-symboltableOBJs:
-	$(MAKE) -C $(SYMBOLTABLEDIR) SymboltableOBJTarget
-	
-
-scanner: 
-	$(MAKE) -C $(SCANNERDIR) makeTestScanner
-
-	
+clean: $(SUBDIRSCLEAN)
+$(SUBDIRSCLEAN): clean%:
+	$(MAKE) -C $* $(@)
