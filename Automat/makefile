@@ -1,42 +1,17 @@
-#
-#		Targets zum Bauen des Tests
-#
+include ../Constants.mk
 
-# Linken der Object-files, abhaengig von AutomatTarget und TestAutomatTarget
-# flag:
-# -g --> debug Informationen erzeugen
-# -o --> name des output-files
-
-makeTestAutomat: AutomatTarget TestAutomatTarget  
-	g++ -g objs/Automat.o debug/TestAutomat.o -o debug/AutomatTest.out
+makeTestAutomat: $(BINDIRTEST)/TestAutomat.o AutomatOBJTarget 
+	$(CC) $(LFLAGS) -o $(BINDIRTEST)/AutomatTest.out $(OBJDIR)/*.o $(<) 
 	
+$(OBJDIR)/%.o :  $(SRCDIR)/%.cpp $(HEADERDIR)/%.h
+	$(CC) $(CFLAGS)  $(<) -o $(@)
 
-# compilieren des Files Automat.cpp zu Automat.o, 
-# das Objekt-File ist abhängig von src/Automat.cpp und src/Automat.h
-# flag:
-# -c --> nur compilieren
-# -g --> debug Informationen erzeugen
-# -Wall --> alle meldungen erzeugen (Warning all)
+$(BINDIRTEST)/TestAutomat.o :  $(SRCDIR)/TestAutomat.cpp $(HEADERDIR)/Automat.h
+	$(CC) $(CFLAGS) $(<) -o $(@)
 
-AutomatTarget :  src/Automat.cpp includes/Automat.h 
-	g++ -g  -c -Wall src/Automat.cpp -o objs/Automat.o  
-
-
-# TestAutomat.o ist abhängig von src/TestAutomat.cpp und src/Automat.h
-TestAutomatTarget :  src/TestAutomat.cpp includes/Automat.h
-	g++ -g  -c -Wall src/TestAutomat.cpp  -o debug/TestAutomat.o  
-
-
-
-# loeschen aller files im verzeichnis obj und debug, dann neu erzeugen
-
+.PHONY: cleanAutomat AutomatOBJTarget
 cleanAutomat:
 	rm -f objs/*.o
 	rm -f debug/*
 	
-	
-# dieses Target wird vom makefile des Gesamtprojekts verwendet
-# objs fuer Gesamtprojekt loeschen und dann neu erzeugen
-AutomatOBJTarget:
-	$(MAKE) AutomatTarget
-
+AutomatOBJTarget: $(OBJDIR)/Automat.o
