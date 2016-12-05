@@ -5,38 +5,38 @@ using namespace std;
 Automat* automat;
 
 void nothing() {
-	cout << "Action: NOTHING | nextState: " << automat->_currentState << endl;
+	cout << "Action: NOTHING | nextState: " << automat->getCurrentState() << endl;
 }
 void add_char() {
-	cout << "Action: ADD_CHAR | nextState: " << automat->_currentState << endl;
+	cout << "Action: ADD_CHAR | nextState: " << automat->getCurrentState() << endl;
 }
 void add_token_integer() {
-	cout << "Action: ADD_TOKEN_INTEGER | nextState: " << automat->_currentState << endl;
+	cout << "Action: ADD_TOKEN_INTEGER | nextState: " << automat->getCurrentState() << endl;
 }
 void add_token_identifier() {
-	cout << "Action: ADD_TOKEN_IDENTIFIER | nextState: " << automat->_currentState << endl;
+	cout << "Action: ADD_TOKEN_IDENTIFIER | nextState: " << automat->getCurrentState() << endl;
 }
 void add_token_sign() {
-	cout << "Action: ADD_TOKEN_SIGN | nextState: " << automat->_currentState << endl;
+	cout << "Action: ADD_TOKEN_SIGN | nextState: " << automat->getCurrentState() << endl;
 }
 void add_token_sign_ug0() {
-	cout << "Action: ADD_TOKEN_SIGN_UG0 | nextState: " << automat->_currentState << endl;
+	cout << "Action: ADD_TOKEN_SIGN_UG0 | nextState: " << automat->getCurrentState() << endl;
 }
 void add_token_sign_ug2() {
-	cout << "Action: ADD_TOKEN_SIGN_UG2 | nextState: " << automat->_currentState << endl;
+	cout << "Action: ADD_TOKEN_SIGN_UG2 | nextState: " << automat->getCurrentState() << endl;
 }
 void add_token_unknown() {
-	cout << "Action: ADD_TOKEN_UKNOWN | nextState: " << automat->_currentState << endl;
+	cout << "Action: ADD_TOKEN_UKNOWN | nextState: " << automat->getCurrentState() << endl;
 }
 void discard() {
-	cout << "Action: DISCARD | nextState: " << automat->_currentState << endl;
+	cout << "Action: DISCARD | nextState: " << automat->getCurrentState() << endl;
 }
 void end() {
-	cout << "Action: END | nextState: " << automat->_currentState << endl;
+	cout << "Action: END | nextState: " << automat->getCurrentState() << endl;
 }
 
 
-int main (int argc, char* argv[]){
+int main () {
 
 	automat = new Automat();
 
@@ -54,16 +54,16 @@ int main (int argc, char* argv[]){
 	};
 
 
-	tansition_action[automat->stateEval(DIGIT)]();
-	tansition_action[automat->stateEval(DIGIT)]();
-	tansition_action[automat->stateEval(SIGN)]();
-	tansition_action[automat->stateEval(EQUALS)]();
-	tansition_action[automat->stateEval(COLON)]();
-	tansition_action[automat->stateEval(COLON)]();
-	tansition_action[automat->stateEval(EQUALS)]();
-	tansition_action[automat->stateEval(LETTER)]();
-	tansition_action[automat->stateEval(LETTER)]();
-	tansition_action[automat->stateEval(EQUALS)]();
+	tansition_action[automat->charEval('0')]();
+	tansition_action[automat->charEval('9')]();
+	tansition_action[automat->charEval('+')]();
+	tansition_action[automat->charEval('=')]();
+	tansition_action[automat->charEval(':')]();
+	tansition_action[automat->charEval(':')]();
+	tansition_action[automat->charEval('=')]();
+	tansition_action[automat->charEval('f')]();
+	tansition_action[automat->charEval('o')]();
+	tansition_action[automat->charEval('=')]();
 
 	return 1;
 }
