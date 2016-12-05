@@ -7,7 +7,7 @@
 
 #include "../../Symboltable/includes/Information.h"
 
-typedef enum {
+enum TType {
 	TOKEN_INTEGER,
 	TOKEN_IDENTIFIER,
 	TOKEN_PLUS,
@@ -32,21 +32,24 @@ typedef enum {
 	TOKEN_WHILE,
 	TOKEN_UNKNOWN,
 	TOKEN_EOF
-} TType;
+};
 
 class Token {
-
 public:
-	TType _type;
-	int _line;
-	int _column;
-	Information *_info;
+	Token(TType type, int line, int column, Information const* info = nullptr)
+		: _type(type), _line(line), _column(column), _info(info) { }
 
-	Token(TType type, int line, int column);
-	virtual ~Token();
-	const char* getTypeAsString();
+	const char* getTypeAsString() const {
+		return this->_tokenTypes[this->_type];
+	}
+
+	TType const _type;
+	int const _line;
+	int const _column;
+	Information const* const _info;
+
 private:
-	static const char* const _tokenTypesArray[];
+	static char const* const _tokenTypes[];
 };
 
 #endif /* TOKEN_H_ */
