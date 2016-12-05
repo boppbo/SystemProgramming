@@ -6,12 +6,18 @@
  */
 
 #include "../includes/Symboltable.h"
+#include "../includes/Info.h"
 
-Symboltable::Symboltable() {
-	// TODO Auto-generated constructor stub
-
+Symboltable::Symboltable(unsigned int tableSize)
+: _tableSize(tableSize) {
 }
 
 Symboltable::~Symboltable() {
-	// TODO Auto-generated destructor stub
+}
+
+Information& Symboltable::getOrAdd(char const * const lexem) {
+	return *new Info(lexem, Info::VarType::INT);
+}
+
+void Symboltable::initSymbols() {
 }

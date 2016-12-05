@@ -8,11 +8,18 @@
 #ifndef SYMBOLTABLE_H_
 #define SYMBOLTABLE_H_
 
+#include "Information.h"
+#include "StringTable.h"
+
 class Symboltable {
 public:
-	Symboltable();
+	explicit Symboltable(unsigned int tableSize = 256);
 	virtual ~Symboltable();
+	Information& getOrAdd(char const *const lexem);
 
+private:
+	void initSymbols();
+	unsigned int _tableSize;
 };
 
 #endif /* SYMBOLTABLE_H_ */

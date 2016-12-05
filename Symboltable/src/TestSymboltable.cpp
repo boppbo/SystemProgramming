@@ -1,10 +1,10 @@
 #include "../includes/Symboltable.h"
+#include <iostream>
+using namespace std;
 
-int main(int argc, char **argv) {
+int main() {
 
-	Symboltable* symboltable;
-
-	symboltable = new Symboltable();
-
-
+	Symboltable symboltable;
+	cout << symboltable.getOrAdd("foo").getName() << endl;
+	cout << symboltable.getOrAdd("bar").getName() << endl;
 }
