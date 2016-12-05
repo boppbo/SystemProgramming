@@ -1,33 +1,30 @@
 #include "../includes/Scanner.h"
-
 #include <iostream>
 #include <iomanip>
 using namespace std;
 
-int main(int argc, char **argv) {
+#define EVER ;;
 
-	Scanner* scanner;
+int main(int argc, char *argv[]) {
+	if (argc != 2)
+		return EXIT_FAILURE;
 
-	char const* filename = "input.txt";
-	char const* logfile = "output.txt";
-	ofstream out(logfile);
+	//disable debug messages.
+	std::clog.setstate(std::ios_base::failbit);
+	Scanner scanner(argv[1], 2048);
 
-	scanner = new Scanner(filename, 1024, 1024, false);
+	for(EVER) {
+		Token *t = scanner.nextToken();
 
-	Token* nextToken;
+		cout << "TType: " << left << setw(20) << t->getTypeAsString()
+			<< " Line: " << t->_line
+			<< "\t Column: " << t->_column << endl;
 
-	do {
-		nextToken = scanner->nextToken();
+		if (t->_type != TOKEN_EOF)
+			break;
 
-		out << "TType: " << left << setw(20) << nextToken->getTypeAsString()
-			<< " Line: " << nextToken->_line
-			<< "\t Col: " << nextToken->_column << endl;
+		delete t;
+	}
 
-		cout << "TType: " << left << setw(20) << nextToken->getTypeAsString()
-			<< " Line: " << nextToken->_line
-			<< "\t Col: " << nextToken->_column << endl;
-
-	} while (nextToken->_type != TOKEN_EOF);
-
-	return 1;
+	return EXIT_SUCCESS;
 }

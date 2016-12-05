@@ -10,39 +10,23 @@
 #include <iostream>
 using namespace std;
 
-bool isIF(char* string);
-bool isWHILE(char* string);
-
-Scanner::Scanner(char const* filename, int bufferSize = 1024, int stdLexemLenght = 1024, bool debug = false) {
-	// TODO Auto-generated constructor stub
-	this->_automat = new Automat();
-	this->_buffer = new Buffer(filename, bufferSize);
-	this->_stdLexemLenght = stdLexemLenght;
-	this->_debug = debug;
-}
-
-Scanner::~Scanner() {
-	// TODO Auto-generated destructor stub
-}
+Scanner::Scanner(char const* filename, unsigned int maxLexemLength)
+: _buffer(filename), _currLexem(new char[maxLexemLength]) { }
 
 Token* Scanner::nextToken() {
-
 	this->_tokenEndReached = false;
-	//free(this->_currentLexem);
-	this->_currentLexem = (char*)malloc(this->_stdLexemLenght * sizeof(char));
-	this->_currentLexemPtr = 0;
-	this->_currentLexem[0] = '\0';
-	this->_currentTokenColumn = this->_currentColumn;
+	this->_currLexemPos = 0;
+	this->_currLexem[0] = '\0';
+	this->_currTokenCol = this->_currCol;
 
-	while(! this->_tokenEndReached) {
-		this->_currentChar = this->_buffer->getChar();
+	while(!this->_tokenEndReached) {
+		this->_currChar = this->_buffer.getChar();
 
-		if(this->_debug)
-			cout << "read char: '" << this->_currentChar << "'"<< endl;
+		clog << "read char: '" << this->_currChar << "'"<< endl;
 
-		(this->*tansition_action[this->_automat->charEval(this->_currentChar)])();
+		(this->*tansition_action[this->_automat.charEval(this->_currChar)])();
 
-		this->_currentColumn++;
+		this->_currCol++;
 	}
 	return this->_returnToken;
 }
@@ -50,14 +34,11 @@ Token* Scanner::nextToken() {
 // ####  ACTIONS ######
 void Scanner::nothing() {
 	this->debugActions("NOTHING");
-
-	this->_currentTokenColumn = this->_currentColumn + 1;
+	this->_currTokenCol = this->_currCol + 1;
 }
 void Scanner::add_char() {
-
-	this->_currentLexem[this->_currentLexemPtr] = this->_currentChar;
-	this->_currentLexem[this->_currentLexemPtr + 1] = '\0';
-	this->_currentLexemPtr++;
+	this->_currLexem[this->_currLexemPos++] = this->_currChar;
+	this->_currLexem[this->_currLexemPos] = '\0';
 
 	this->debugActions("ADD_CHAR");
 }
@@ -70,10 +51,9 @@ void Scanner::add_token_identifier() {
 	this->debugActions("ADD_TOKEN_IDENTIFIER");
 
 	TType type = TOKEN_IDENTIFIER;
-
-	if (isIF(this->_currentLexem) )
+	if (isIF(this->_currLexem) )
 		type = TOKEN_IF;
-	if (isWHILE(this->_currentLexem))
+	else if (isWHILE(this->_currLexem))
 		type = TOKEN_WHILE;
 
 	this->makeToken(type);
@@ -81,28 +61,29 @@ void Scanner::add_token_identifier() {
 void Scanner::add_token_sign() {
 	this->debugActions("ADD_TOKEN_SIGN");
 
-	this->makeToken(this->getSignType(this->_currentLexem));
+	this->makeToken(this->getSignType(this->_currLexem));
 }
 void Scanner::add_token_sign_ug0() {
 	this->debugActions("ADD_TOKEN_SIGN_UG0");
 
 	this->add_char();
-	this->makeToken(this->getSignType(this->_currentLexem), 0);
+	this->makeToken(this->getSignType(this->_currLexem), 0);
 }
 void Scanner::add_token_sign_ug2() {
 	this->debugActions("ADD_TOKEN_SIGN_UG2");
 
-	this->_currentLexem[this->_currentLexemPtr - 2] = '\0';
-	this->_currentLexemPtr -= 2;
+	this->_currLexemPos -= 2;
+	this->_currLexem[this->_currLexemPos] = '\0';
 
-	this->makeToken(this->getSignType(this->_currentLexem), 2);
+	this->makeToken(this->getSignType(this->_currLexem), 2);
 }
 void Scanner::add_new_line() {
 	this->debugActions("ADD_NEW_LINE");
 
-	this->_currentLine++;
-	this->_currentColumn = 0; // wird in nextToken() auf 1 erhöht
-	this->_currentTokenColumn = 1;
+	this->_currLine++;
+	// wird in nextToken() auf 1 erhöht
+	this->_currCol = 0;
+	this->_currTokenCol = 1;
 }
 void Scanner::add_token_unknown() {
 	this->debugActions("ADD_TOKEN_SIGN_UNKONWN");
@@ -112,30 +93,32 @@ void Scanner::add_token_unknown() {
 void Scanner::discard() {
 	this->debugActions("DISCARD");
 
-	this->_currentLexemPtr = 0;
-	this->_currentLexem[0] = '\0';
+	this->_currLexemPos = 0;
+	this->_currLexem[0] = '\0';
 }
 void Scanner::end() {
 	this->debugActions("END");
 
 	this->makeToken(TOKEN_EOF);
 }
+// ####  END ACTIONS ######
 
 void Scanner::makeToken(TType type, int unget) {
-	// TODO insert Lexem in Symbol-Tab and add information to Token
-	this->_currentColumn -= unget;
-	this->_buffer->ungetChar(unget);
-	this->_returnToken = new Token(type, this->_currentLine, this->_currentTokenColumn);
+	this->_currCol -= unget;
+	this->_buffer.ungetChar(unget);
+	this->_returnToken = new Token(
+			type,
+			this->_currLine,
+			this->_currTokenCol,
+			&this->_st.getOrAdd(this->_currLexem));
 	this->_tokenEndReached = true;
 }
 
-void Scanner::debugActions(char const * action) {
-	if(this->_debug)
-		cout << "Action: " << action << " | " << "Lexem: " << this->_currentLexem << " | " << "State: " << this->_automat->_currentState << endl;
+void Scanner::debugActions(char const * action) const {
+	clog << "Action: " << action << " | " << "Lexem: " << this->_currLexem << " | " << "State: " << this->_automat.getCurrentState() << endl;
 }
 
-TType Scanner::getSignType(char * string) {
-
+TType Scanner::getSignType(char const * const string) const {
 	if (strcmp(string, "+") == 0) return TOKEN_PLUS;
 	if (strcmp(string, "-") == 0) return TOKEN_MINUS;
 	if (strcmp(string, ":") == 0) return TOKEN_COLON;
@@ -158,7 +141,7 @@ TType Scanner::getSignType(char * string) {
 
 }
 
-bool isIF(char* string) {
+bool Scanner::isIF(char const * const string) const {
 
 	if(strcmp(string, "IF") == 0)
 		return true;
@@ -169,7 +152,7 @@ bool isIF(char* string) {
 	return false;
 }
 
-bool isWHILE(char* string) {
+bool Scanner::isWHILE(char const * const string) const {
 
 	if (strcmp(string, "WHILE") == 0)
 		return true;

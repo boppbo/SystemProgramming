@@ -10,28 +10,31 @@
 
 #include "../../Automat/includes/Automat.h"
 #include "../../Buffer/includes/Buffer.h"
+#include "../../Symboltable/includes/Symboltable.h"
 #include "../includes/Token.h"
 
 class Scanner {
 
 public:
-	Scanner(char const* filename, int bufferSize, int stdLexemLenght, bool debug);
-	virtual ~Scanner();
-	Token* nextToken();
-	int _currentTokenColumn;
-	int _currentColumn = 1;
-private:
-	bool _tokenEndReached = false;
-	bool _debug = false;
-	char _currentChar;
-	char* _currentLexem;
-	int _currentLexemPtr;
-	int _stdLexemLenght;
-	int _currentLine = 1;
+	explicit Scanner(char const* filename, unsigned int maxLexemLength = 1024);
+	virtual ~Scanner() { delete[] this->_currLexem; }
+	Scanner(Scanner const &src) = delete;
+	Scanner& operator= (Scanner const &src) = delete;
 
-	Token* _returnToken;
-	Buffer* _buffer;
-	Automat* _automat;
+	Token* nextToken();
+private:
+	Automat _automat;
+	Buffer _buffer;
+	Symboltable _st;
+
+	char* _currLexem = nullptr;
+	Token* _returnToken = nullptr;
+
+	bool _tokenEndReached = false;
+	char _currChar = '\0';
+	int _currTokenCol = 1, _currCol = 1, _currLine = 1;
+	int _currLexemPos = 0;
+
 	// Actions
 	void nothing();
 	void add_char();
@@ -44,9 +47,13 @@ private:
 	void add_token_unknown();
 	void discard();
 	void end();
-	TType getSignType(char* string);
+
+	TType getSignType(char const* string) const;
 	void makeToken(TType type, int unget = 1);
-	void debugActions(char const* action);
+	void debugActions(char const* action) const;
+	bool isIF(char const * const string) const;
+	bool isWHILE(char const * const string) const;
+
 
 	void(Scanner::*tansition_action[11])() = {
 		&Scanner::nothing,
