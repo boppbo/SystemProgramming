@@ -9,17 +9,24 @@
 #define SYMBOLTABLE_H_
 
 #include "Information.h"
+#include "SearchableDeque.h"
 #include "StringTable.h"
 
 class Symboltable {
 public:
-	explicit Symboltable(unsigned int tableSize = 256);
+	explicit Symboltable(unsigned int bucketSize = 256);
 	virtual ~Symboltable();
 	Information& getOrAdd(char const *const lexem);
 
+protected:
+	unsigned int getHashCode(char const * lexem) const;
+
 private:
 	void initSymbols();
-	unsigned int _tableSize;
+
+	SearchableDeque* const _buckets;
+	unsigned int const _bucketSize;
+	StringTable _strings;
 };
 
 #endif /* SYMBOLTABLE_H_ */

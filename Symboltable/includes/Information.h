@@ -17,6 +17,8 @@ public:
 	virtual bool isArray() const = 0;
 	virtual bool isInteger() const = 0;
 	virtual bool isKeyword() const = 0;
+
+	virtual void setIsArray(bool isArray) = 0;
 };
 
 #endif /* INFORMATION_H_ */

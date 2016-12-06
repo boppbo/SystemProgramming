@@ -10,13 +10,12 @@
 
 #include "../../Common/includes/cstring.h"
 #include "Information.h"
+#include <stdexcept>
 
 class Info : public Information {
 public:
-	enum class VarType : char { INT, INTARR, KEYWORD };
-
-	explicit Info(char const * name, VarType const varType)
-	: name(strdup(name)), _varType(varType) { }
+	explicit Info(char const * name, bool isKeyword = false)
+	: name(strdup(name)), _varType(isKeyword ? VarType::KEYWORD : VarType::INT) { }
 
 	virtual ~Info() {
 		delete[] this->name;
@@ -38,9 +37,17 @@ public:
 		return this->_varType == VarType::KEYWORD;
 	}
 
+	virtual void setIsArray(bool isArray) override {
+		if (this->_varType == VarType::KEYWORD)
+			throw std::domain_error("Invalid operation for keywords!");
+
+		this->_varType = isArray ? VarType::INTARR : VarType::INT;
+	}
+
 private:
+	enum class VarType : char { INT, INTARR, KEYWORD };
 	char* const name;
-	VarType const _varType;
+	VarType _varType;
 };
 
 #endif /* INFORMATION_H_ */
