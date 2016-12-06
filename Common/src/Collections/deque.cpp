@@ -8,26 +8,8 @@
 #include "../../includes/Collections/deque.h"
 #include <stdexcept>
 
-deque::~deque()
-{
-	while(this->_firstNode != nullptr) {
-		Node *ptr = this->_firstNode;
-		this->_firstNode = this->_firstNode->_next;
-
-		delete ptr;
-	}
-}
-
-void deque::push(char const * const newItem) {
-	this->_lastNode = new Node(newItem, this->_lastNode);
-	if (this->_firstNode == nullptr)
-		this->_firstNode = this->_lastNode;
-	this->_size++;
-
-	this->setCurrentNode(*this->_lastNode);
-}
-
-char const& deque::operator[](unsigned int const index) const {
+template<typename T, bool isArr>
+T const& deque<T, isArr>::operator[](unsigned int const index) const {
 	using std::out_of_range;
 	bool fromEnd = index > (this->_size / 2);
 

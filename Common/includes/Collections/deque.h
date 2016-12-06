@@ -1,5 +1,5 @@
 /*
- * Buffer.h
+ * deque.h
  *
  *  Created on: Sep 26, 2012
  *      Author: knad0001
@@ -8,45 +8,56 @@
 #ifndef DEQUE_H_
 #define DEQUE_H_
 
+template<typename T, bool isArr = false>
 class deque {
 public:
 	deque() { }
-	virtual ~deque();
+	virtual ~deque() {
+		while(this->_firstNode != nullptr) {
+			Node *ptr = this->_firstNode;
+			this->_firstNode = this->_firstNode->_next;
+
+			delete ptr;
+		}
+	}
 	deque(deque const &src) = delete;
 	deque& operator= (deque const &src) = delete;
 
-	virtual void push(char const * const newItem);
-	char const& operator[](unsigned int const index) const;
+	unsigned int getSize() { return this->_size; }
+	virtual void push(T const * const newItem) {
+		this->_lastNode = new Node(newItem, this->_lastNode);
+		if (this->_firstNode == nullptr)
+			this->_firstNode = this->_lastNode;
+		this->_size++;
+	}
+	T const& operator[](unsigned int const index) const;
 
 protected:
 	struct Node  {
-		char const * const _data;
+		T const * const _data;
 		Node *_next = nullptr, *_prev;
 
-		Node(char const * const data, Node* const prev = nullptr)
+		Node(T const * const data, Node* const prev = nullptr)
 		: _data(data), _prev(prev) {
 			if (prev != nullptr)
 				prev->_next = this;
 		}
-		Node(deque const &src) = delete;
+		Node(Node const &src) = delete;
 		Node& operator= (Node const &src) = delete;
 		virtual ~Node()
 		{
-			delete[] this->_data;
+			if (isArr)
+				delete[] this->_data;
+			else
+				delete this->_data;
 		}
 	};
 
-	virtual void setCurrentNode(Node &current) {
-		this->_currentNode = &current;
-		this->_currentPos = current._data;
-	}
-	virtual Node const* getCurrentNode() { return this->_currentNode; }
-	unsigned int getSize() { return this->_size; }
-	char const*_currentPos = nullptr;
+	Node* getLastNode() { return this->_lastNode; }
 
 private:
 	unsigned int _size = 0;
-	Node *_currentNode = nullptr, *_firstNode = nullptr, *_lastNode = nullptr;
+	Node *_firstNode = nullptr, *_lastNode = nullptr;
 };
 
 #endif /* DEQUE_H_ */

@@ -8,9 +8,9 @@
 #ifndef GENERICBUFFER_H_
 #define GENERICBUFFER_H_
 
-#include "../../Common/includes/Collections/deque.h"
+#include "../../Common/includes/Collections/trackingDeque.h"
 
-class GenericBuffer : protected deque {
+class GenericBuffer : protected trackingDeque {
 public:
 	GenericBuffer() { }
 	char getChar();

@@ -8,9 +8,9 @@
 #ifndef STRINGTABLE_H_
 #define STRINGTABLE_H_
 
-#include "../../Common/includes/Collections/deque.h"
+#include "../../Common/includes/Collections/trackingDeque.h"
 
-class StringTable : protected deque {
+class StringTable : protected trackingDeque {
 public:
 	StringTable(unsigned int nodeSize = 4096) : _nodeSize(nodeSize) { }
 	char const * add (char const * const item);
