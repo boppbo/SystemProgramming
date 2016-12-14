@@ -21,10 +21,17 @@ Buffer::Buffer(const char* const filePath, unsigned int size)
 
 char const* Buffer::read()
 {
-	auto result = new char[this->_size];
+	// dirty hack to insert new line before eof.
+	auto result = new char[this->_size+1];
 
 	this->_stream.read(result, this->_size-1);
-	result[this->_stream.gcount()] = '\0';
+
+	if (this->isEof() && result[this->_stream.gcount()-1] != '\n') {
+		result[this->_stream.gcount()] = '\n';
+		result[this->_stream.gcount()+1] = '\0';
+	}
+	else
+		result[this->_stream.gcount()] = '\0';
 
 	return result;
 }
