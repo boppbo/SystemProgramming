@@ -22,7 +22,7 @@ public:
 		while(result != nullptr && !result->_data->compareLex(lexem))
 			result = result->_prev;
 
-		return const_cast<Info *>( result->_data);
+		return result == nullptr ? nullptr : const_cast<Info *>( result->_data);
 	}
 };
 

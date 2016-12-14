@@ -20,6 +20,6 @@ char const * StringTable::add(char const * item) {
 }
 
 void StringTable::push(char const * const newItem) {
-	deque::push(newItem);
+	trackingDeque::push(newItem);
 	this->_spaceLeft = this->_nodeSize;
 }
