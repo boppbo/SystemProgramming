@@ -112,8 +112,12 @@ void Scanner::add_token_unknown() {
 	this->debugActions("ADD_TOKEN_SIGN_UNKONWN");
 
 	this->makeToken(TOKEN_UNKNOWN);
-	char reason[] = {'S', 'y', 'm', 'b', 'o', 'l', ':', ' ', this->_currLexem[0], '\0'};
+	char* reason = new char[this->_currLexemPos+9];
+	strncpy(reason, "Symbol: ", 9);
+	strncpy((reason+8), this->_currLexem, this->_currLexemPos+1);
+
 	this->_returnToken->setUnknownReason(reason);
+	delete[] reason;
 }
 void Scanner::discard() {
 	this->debugActions("DISCARD");
