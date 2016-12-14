@@ -13,10 +13,10 @@ Buffer::Buffer(const char* const filePath, unsigned int size)
 : _size(size), _stream(filePath) {
 	//Need at least one char and '\'
 	if (size < 2)
-		throw new invalid_argument("size");
+		throw invalid_argument("size");
 
 	if (!this->_stream)
-		throw new invalid_argument("filePath");
+		throw invalid_argument("filePath");
 }
 
 char const* Buffer::read()
