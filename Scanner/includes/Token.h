@@ -6,6 +6,7 @@
 #define TOKEN_H_
 
 #include "../../Symboltable/includes/Information.h"
+#include "../../Common/includes/cstring.h"
 
 enum TType {
 	TOKEN_INTEGER,
@@ -36,19 +37,33 @@ enum TType {
 
 class Token {
 public:
-	Token(TType type, int line, int column, Information const* info = nullptr)
-		: _type(type), _line(line), _column(column), _info(info) { }
+	Token(TType type, int line, int column)
+		: _type(type), _line(line), _column(column) { }
 
-	const char* getTypeAsString() const {
+	virtual ~Token() {
+		delete[] this->_unknownReason;
+	}
+
+	virtual const char* getTypeAsString() const {
 		return this->_tokenTypes[this->_type];
 	}
 
 	TType const _type;
 	int const _line;
 	int const _column;
-	Information const* const _info;
 
+	Information const* _info = nullptr;
+	int _integerValue = 0;
+
+	void setUnknownReason(char const * const reason ) {
+		delete[] this->_unknownReason;
+		this->_unknownReason = strdup(reason);
+	}
+	char const * getUnknownReason() {
+		return this->_unknownReason;
+	}
 private:
+	char const * _unknownReason = nullptr;
 	static char const* const _tokenTypes[];
 };
 

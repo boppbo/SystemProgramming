@@ -16,7 +16,7 @@
 class Scanner {
 
 public:
-	explicit Scanner(char const* filename, unsigned int maxLexemLength = 1024);
+	explicit Scanner(char const* filename, Symboltable& st, unsigned int maxLexemLength = 1024);
 	virtual ~Scanner() { delete[] this->_currLexem; }
 	Scanner(Scanner const &src) = delete;
 	Scanner& operator= (Scanner const &src) = delete;
@@ -25,7 +25,7 @@ public:
 private:
 	Automat _automat;
 	Buffer _buffer;
-	Symboltable _st;
+	Symboltable& _st;
 
 	char* _currLexem = nullptr;
 	Token* _returnToken = nullptr;
@@ -33,7 +33,8 @@ private:
 	bool _tokenEndReached = false;
 	char _currChar = '\0';
 	int _currTokenCol = 1, _currCol = 1, _currLine = 1;
-	int _currLexemPos = 0;
+	unsigned int _currLexemPos = 0;
+	unsigned int const _maxLexemLength;
 
 	// Actions
 	void nothing();
