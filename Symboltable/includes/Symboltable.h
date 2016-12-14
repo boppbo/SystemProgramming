@@ -14,7 +14,7 @@
 
 class Symboltable {
 public:
-	explicit Symboltable(unsigned int bucketSize = 256);
+	explicit Symboltable(unsigned int bucketSize = 2048);
 	virtual ~Symboltable();
 	Information& getOrAdd(char const *const lexem);
 
