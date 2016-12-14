@@ -6,8 +6,8 @@ BINDIRTEST := debug
 
 DEBUG := -g
 OPTIMIZE := -O2
-CFLAGS = -Wall -Wextra $(DEBUG) -c
-LFLAGS = -Wall $(DEBUG)
+CFLAGS = -Wall -Wextra $(OPTIMIZE) -c
+LFLAGS = -Wall $(OPTIMIZE)
 
 AUTOMATDIR := Automat
 BUFFERDIR := Buffer
