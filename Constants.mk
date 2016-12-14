@@ -6,7 +6,7 @@ BINDIRTEST := debug
 
 DEBUG := -g
 OPTIMIZE := -O2
-CFLAGS = -Wall -Wextra $(OPTIMIZE) -c
+CFLAGS = -Wall -std=c++11 -Wextra $(OPTIMIZE) -c
 LFLAGS = -Wall $(OPTIMIZE)
 
 AUTOMATDIR := Automat
