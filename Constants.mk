@@ -6,8 +6,8 @@ BINDIRTEST := debug
 
 DEBUG := -g
 OPTIMIZE := -O2
-CFLAGS = -Wall -std=c++11 -Wextra $(OPTIMIZE) -c
-LFLAGS = -Wall $(OPTIMIZE)
+CFLAGS = -Wall -Wextra -std=c++11 -march=native $(DEBUG) -c
+LFLAGS = -Wall $(DEBUG)
 
 AUTOMATDIR := Automat
 BUFFERDIR := Buffer
