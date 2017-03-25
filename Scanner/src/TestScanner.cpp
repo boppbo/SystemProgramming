@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	if (argc != 3)
 		return EXIT_FAILURE;
 
-	// disable debug messages. 
+	// disable debug messages.
 	clog.setstate(std::ios_base::failbit);
 
 	Symboltable st;
