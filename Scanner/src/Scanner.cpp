@@ -97,9 +97,7 @@ void Scanner::add_token_sign_ug0() {
 void Scanner::add_token_sign_ug2() {
 	this->debugActions("ADD_TOKEN_SIGN_UG2");
 
-	this->_currLexemPos -= 2;
-	this->_currLexem[this->_currLexemPos] = '\0';
-
+	this->_currLexem[this->_currLexemPos-1] = '\0';
 	this->makeToken(this->getSignType(this->_currLexem), 2);
 }
 void Scanner::add_new_line() {

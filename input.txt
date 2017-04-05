@@ -1,9 +1,12 @@
-﻿dies ist ein :*Kommentar
+=: =:=:==:= =:=:=:=: :=
 
-Kommentar*: 
+dies ist ein /*Kommentar
+
+Kommentar*/ 
 4 Zeile ok
 
-:*kjfksjf*jfjskfj*: test
+/*kjfksjf*jfjskfj*/
+test
 /*Kommentar***/
 sichtbar
 */

@@ -1,16 +1,35 @@
-Token Identifier           Line: 1     Column: 4     Lexem: dies
-Token Identifier           Line: 1     Column: 9     Lexem: ist
-Token Identifier           Line: 1     Column: 13    Lexem: ein
-Token Integer              Line: 4     Column: 1     Value: 4
-Token Identifier           Line: 4     Column: 3     Lexem: Zeile
-Token Identifier           Line: 4     Column: 9     Lexem: ok
-Token Identifier           Line: 6     Column: 21    Lexem: test
-Token Star                 Line: 7     Column: 2    
-Token Identifier           Line: 7     Column: 3     Lexem: Kommentar
-Token Star                 Line: 7     Column: 12   
-Token Star                 Line: 7     Column: 13   
-Token Star                 Line: 7     Column: 14   
-Token Identifier           Line: 8     Column: 1     Lexem: sichtbar
-Token Star                 Line: 9     Column: 1    
-Token Identifier           Line: 10    Column: 1     Lexem: end
-Token EOF                  Line: 13    Column: 1    
+Token Equals               Line: 1     Column: 1    
+Token Colon                Line: 1     Column: 2    
+Token Assign2 (=:=)        Line: 1     Column: 4    
+Token Assign               Line: 1     Column: 7    
+Token Assign2 (=:=)        Line: 1     Column: 9    
+Token Assign2 (=:=)        Line: 1     Column: 13   
+Token Assign               Line: 1     Column: 16   
+Token Assign               Line: 1     Column: 18   
+Token Colon                Line: 1     Column: 20   
+Token Assign               Line: 1     Column: 22   
+Token Identifier           Line: 3     Column: 1     Lexem: dies
+Token Identifier           Line: 3     Column: 6     Lexem: ist
+Token Identifier           Line: 3     Column: 10    Lexem: ein
+Token Star                 Line: 3     Column: 15   
+Token Identifier           Line: 3     Column: 16    Lexem: Kommentar
+Token Identifier           Line: 5     Column: 1     Lexem: Kommentar
+Token Star                 Line: 5     Column: 10   
+Token Integer              Line: 6     Column: 1     Value: 4
+Token Identifier           Line: 6     Column: 3     Lexem: Zeile
+Token Identifier           Line: 6     Column: 9     Lexem: ok
+Token Star                 Line: 8     Column: 2    
+Token Identifier           Line: 8     Column: 3     Lexem: kjfksjf
+Token Star                 Line: 8     Column: 10   
+Token Identifier           Line: 8     Column: 11    Lexem: jfjskfj
+Token Star                 Line: 8     Column: 18   
+Token Identifier           Line: 9     Column: 1     Lexem: test
+Token Star                 Line: 10    Column: 2    
+Token Identifier           Line: 10    Column: 3     Lexem: Kommentar
+Token Star                 Line: 10    Column: 12   
+Token Star                 Line: 10    Column: 13   
+Token Star                 Line: 10    Column: 14   
+Token Identifier           Line: 11    Column: 1     Lexem: sichtbar
+Token Star                 Line: 12    Column: 1    
+Token Identifier           Line: 13    Column: 1     Lexem: end
+Token EOF                  Line: 16    Column: 1    
