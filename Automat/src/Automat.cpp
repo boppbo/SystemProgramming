@@ -158,7 +158,7 @@ Automat::stateElement const Automat::_StateMatrix[][11] = {
 		{ STATE_COMMENT, NOTHING },		// Event: EQUALS	('=')
 		{ STATE_COMMENT, NOTHING },		// Event: AND		('&')
 		{ STATE_COMMENT, NOTHING },		// Event: SPACE		(' ')
-		{ STATE_COMMENT, NOTHING },		// Event: NEW_LINE	('\n')
+		{ STATE_COMMENT, ADD_NEW_LINE },// Event: NEW_LINE	('\n')
 		{ STATE_COMMENT, NOTHING },		// Event: UNKNOWN	(others)
 		{ STATE_COMMENT, END }			// Event: EOF
 	},
