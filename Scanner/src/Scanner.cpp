@@ -5,6 +5,8 @@
  *      Author: knad0001
  */
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "../includes/Scanner.h"
 #include "../../Common/includes/cstring.h"
 #include <iostream>
@@ -113,8 +115,8 @@ void Scanner::add_token_unknown() {
 
 	this->makeToken(TOKEN_UNKNOWN);
 	char* reason = new char[this->_currLexemPos+9];
-	strncpy(reason, "Symbol: ", 9);
-	strncpy((reason+8), this->_currLexem, this->_currLexemPos+1);
+	__strncpy(reason, "Symbol: ", 9);
+	__strncpy((reason+8), this->_currLexem, this->_currLexemPos+1);
 
 	this->_returnToken->setUnknownReason(reason);
 	delete[] reason;
@@ -147,34 +149,34 @@ void Scanner::debugActions(char const * action) const {
 }
 
 TType Scanner::getSignType(char const * const string) const {
-	if (strcmp(string, "+") == 0) return TOKEN_PLUS;
-	if (strcmp(string, "-") == 0) return TOKEN_MINUS;
-	if (strcmp(string, ":") == 0) return TOKEN_COLON;
-	if (strcmp(string, ";") == 0) return TOKEN_SEMICOLON;
-	if (strcmp(string, "<") == 0) return TOKEN_SMALLER;
-	if (strcmp(string, ">") == 0) return TOKEN_GREATER;
-	if (strcmp(string, "=") == 0) return TOKEN_EQUALS;
-	if (strcmp(string, "*") == 0) return TOKEN_STAR;
-	if (strcmp(string, ":=") == 0) return TOKEN_ASSIGN;
-	if (strcmp(string, "=:=") == 0) return TOKEN_ASSIGN2;
-	if (strcmp(string, "!") == 0) return TOKEN_NOT;
-	if (strcmp(string, "&&") == 0) return TOKEN_AND;
-	if (strcmp(string, "(") == 0) return TOKEN_BRACKETS0_OPEN;
-	if (strcmp(string, ")") == 0) return TOKEN_BRACKETS0_CLOSE;
-	if (strcmp(string, "{") == 0) return TOKEN_BRACKETS1_OPEN;
-	if (strcmp(string, "}") == 0) return TOKEN_BRACKETS1_CLOSE;
-	if (strcmp(string, "[") == 0) return TOKEN_BRACKETS2_OPEN;
-	if (strcmp(string, "]") == 0) return TOKEN_BRACKETS2_CLOSE;
+	if (__strcmp(string, "+") == 0) return TOKEN_PLUS;
+	if (__strcmp(string, "-") == 0) return TOKEN_MINUS;
+	if (__strcmp(string, ":") == 0) return TOKEN_COLON;
+	if (__strcmp(string, ";") == 0) return TOKEN_SEMICOLON;
+	if (__strcmp(string, "<") == 0) return TOKEN_SMALLER;
+	if (__strcmp(string, ">") == 0) return TOKEN_GREATER;
+	if (__strcmp(string, "=") == 0) return TOKEN_EQUALS;
+	if (__strcmp(string, "*") == 0) return TOKEN_STAR;
+	if (__strcmp(string, ":=") == 0) return TOKEN_ASSIGN;
+	if (__strcmp(string, "=:=") == 0) return TOKEN_ASSIGN2;
+	if (__strcmp(string, "!") == 0) return TOKEN_NOT;
+	if (__strcmp(string, "&&") == 0) return TOKEN_AND;
+	if (__strcmp(string, "(") == 0) return TOKEN_BRACKETS0_OPEN;
+	if (__strcmp(string, ")") == 0) return TOKEN_BRACKETS0_CLOSE;
+	if (__strcmp(string, "{") == 0) return TOKEN_BRACKETS1_OPEN;
+	if (__strcmp(string, "}") == 0) return TOKEN_BRACKETS1_CLOSE;
+	if (__strcmp(string, "[") == 0) return TOKEN_BRACKETS2_OPEN;
+	if (__strcmp(string, "]") == 0) return TOKEN_BRACKETS2_CLOSE;
 	return TOKEN_UNKNOWN;
 
 }
 
 bool Scanner::isIF(char const * const string) const {
 
-	if(strcmp(string, "IF") == 0)
+	if(__strcmp(string, "IF") == 0)
 		return true;
 
-	if (strcmp(string, "if") == 0)
+	if (__strcmp(string, "if") == 0)
 			return true;
 
 	return false;
@@ -182,10 +184,10 @@ bool Scanner::isIF(char const * const string) const {
 
 bool Scanner::isWHILE(char const * const string) const {
 
-	if (strcmp(string, "WHILE") == 0)
+	if (__strcmp(string, "WHILE") == 0)
 		return true;
 
-	if (strcmp(string, "while") == 0)
+	if (__strcmp(string, "while") == 0)
 		return true;
 	return false;
 }

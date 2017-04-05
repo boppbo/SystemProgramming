@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 char const * StringTable::add(char const * item) {
-	auto len = strlen(item)+1;
+	auto len = __strlen(item)+1;
 	if (len > _nodeSize)
 		throw std::invalid_argument("item");
 
@@ -11,7 +11,7 @@ char const * StringTable::add(char const * item) {
 		this->push(new char[this->_nodeSize]);
 
 	char const * result = this->_currentPos;
-	strncpy(const_cast<char *>(this->_currentPos), item, len);
+	__strncpy(const_cast<char *>(this->_currentPos), item, len);
 
 	this->_currentPos += len;
 	this->_spaceLeft -= len;

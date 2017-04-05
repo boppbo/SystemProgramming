@@ -15,16 +15,16 @@
 class Info : public Information {
 public:
 	explicit Info(char const * name, bool isKeyword = false)
-	: name(strdup(name)), _varType(isKeyword ? VarType::KEYWORD : VarType::INT) { }
+	: name(__strdup(name)), _varType(isKeyword ? VarType::KEYWORD : VarType::INT) { }
 
 	virtual ~Info() {
 		delete[] this->name;
 	}
 	virtual bool compareLex(char const * lexem) const override {
-		return strcmp(lexem, this->name) == 0;
+		return __strcmp(lexem, this->name) == 0;
 	}
 	virtual char* getName() const override{
-		return strdup(this->name);
+		return __strdup(this->name);
 	}
 
 	virtual bool isArray() const override {

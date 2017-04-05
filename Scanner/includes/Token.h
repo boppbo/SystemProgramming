@@ -57,7 +57,7 @@ public:
 
 	void setUnknownReason(char const * const reason ) {
 		delete[] this->_unknownReason;
-		this->_unknownReason = strdup(reason);
+		this->_unknownReason = __strdup(reason);
 	}
 	char const * getUnknownReason() {
 		return this->_unknownReason;

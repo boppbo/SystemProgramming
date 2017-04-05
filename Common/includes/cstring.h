@@ -9,9 +9,9 @@
 #ifndef CUSTOMCSTRING_H_
 #define CUSTOMCSTRING_H_
 
-int strcmp (char const * str1, char const * str2);
-char * strdup (char const * source);
-unsigned int strlen (char const *const data);
-char * strncpy ( char * destination, char const * source, unsigned int num);
+int __strcmp (char const * str1, char const * str2);
+char * __strdup (char const * source);
+unsigned int __strlen (char const *const data);
+char * __strncpy ( char * destination, char const * source, unsigned int num);
 
 #endif /* CSTRING_H_ */
