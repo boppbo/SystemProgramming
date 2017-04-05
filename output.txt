@@ -1,0 +1,457 @@
+Token Identifier           Line: 1     Column: 1     Lexem: qwfefewewf
+Token Identifier           Line: 2     Column: 1     Lexem: efewf
+Token Integer              Line: 3     Column: 1     Value: 32432525
+Token Integer              Line: 3     Column: 10    Value: 5245
+Token Integer              Line: 3     Column: 16    Value: 4543
+Token Identifier           Line: 5     Column: 1     Lexem: Das
+Token Identifier           Line: 5     Column: 5     Lexem: Projekt
+Token Identifier           Line: 5     Column: 13    Lexem: wurde
+Token Identifier           Line: 5     Column: 19    Lexem: in
+Token Integer              Line: 5     Column: 22    Value: 4
+Token Identifier           Line: 5     Column: 24    Lexem: Teilprojekte
+Token Identifier           Line: 5     Column: 37    Lexem: aufgeteilt
+Token Colon                Line: 5     Column: 47   
+Token Minus                Line: 7     Column: 2    
+Token Identifier           Line: 7     Column: 4     Lexem: Automat
+Token Minus                Line: 8     Column: 2    
+Token Identifier           Line: 8     Column: 4     Lexem: Buffer
+Token Minus                Line: 9     Column: 2    
+Token Identifier           Line: 9     Column: 4     Lexem: Symboltabelle
+Token Minus                Line: 11    Column: 2    
+Token Identifier           Line: 11    Column: 4     Lexem: Scanner
+Token Identifier           Line: 14    Column: 1     Lexem: Jedes
+Token Identifier           Line: 14    Column: 7     Lexem: Teilprojekt
+Token Identifier           Line: 14    Column: 19    Lexem: hat
+Token Identifier           Line: 14    Column: 23    Lexem: die
+Token Identifier           Line: 14    Column: 27    Lexem: Verzeichnisstruktur
+Token Colon                Line: 14    Column: 46   
+Token Minus                Line: 16    Column: 2    
+Token Identifier           Line: 16    Column: 4     Lexem: src
+Token Identifier           Line: 16    Column: 10    Lexem: enthaelt
+Token Identifier           Line: 16    Column: 19    Lexem: den
+Token Identifier           Line: 16    Column: 23    Lexem: Source
+Token Minus                Line: 16    Column: 29   
+Token Identifier           Line: 16    Column: 30    Lexem: Code
+Token Minus                Line: 17    Column: 2    
+Token Identifier           Line: 17    Column: 4     Lexem: includes
+Token Identifier           Line: 17    Column: 14    Lexem: enthaelt
+Token Identifier           Line: 17    Column: 23    Lexem: die
+Token Identifier           Line: 17    Column: 27    Lexem: Headerfiles
+Token Minus                Line: 18    Column: 2    
+Token Identifier           Line: 18    Column: 4     Lexem: objs
+Token Identifier           Line: 18    Column: 11    Lexem: enthaelt
+Token Identifier           Line: 18    Column: 20    Lexem: die
+Token Identifier           Line: 18    Column: 24    Lexem: Objektfiles
+Token Identifier           Line: 18    Column: 37    Lexem: die
+Token Identifier           Line: 18    Column: 41    Lexem: notwenig
+Token Identifier           Line: 18    Column: 50    Lexem: fuer
+Token Identifier           Line: 18    Column: 55    Lexem: das
+Token Identifier           Line: 18    Column: 59    Lexem: Gesamtprojekt
+Token Identifier           Line: 18    Column: 73    Lexem: sind
+Token Minus                Line: 19    Column: 2    
+Token Identifier           Line: 19    Column: 4     Lexem: debug
+Token Identifier           Line: 19    Column: 12    Lexem: enthaelt
+Token Identifier           Line: 19    Column: 21    Lexem: die
+Token Identifier           Line: 19    Column: 25    Lexem: Objektfiles
+Token Identifier           Line: 19    Column: 37    Lexem: und
+Token Identifier           Line: 19    Column: 41    Lexem: das
+Token Identifier           Line: 19    Column: 45    Lexem: ausfuehrbare
+Token Identifier           Line: 19    Column: 58    Lexem: File
+Token Identifier           Line: 19    Column: 63    Lexem: zum
+Token Identifier           Line: 19    Column: 67    Lexem: Testen
+Token Identifier           Line: 19    Column: 75    Lexem: des
+Token Identifier           Line: 19    Column: 79    Lexem: Teilprojekts
+Token Identifier           Line: 22    Column: 1     Lexem: Jedes
+Token Identifier           Line: 22    Column: 7     Lexem: Teilprojekt
+Token Identifier           Line: 22    Column: 19    Lexem: enthaelt
+Token Identifier           Line: 22    Column: 28    Lexem: ein
+Token Identifier           Line: 22    Column: 32    Lexem: eigenes
+Token Identifier           Line: 22    Column: 40    Lexem: Makefile
+Token Identifier           Line: 22    Column: 49    Lexem: und
+Token Identifier           Line: 22    Column: 53    Lexem: eine
+Token Identifier           Line: 22    Column: 58    Lexem: eigene
+Token Identifier           Line: 22    Column: 65    Lexem: Main
+Token Minus                Line: 22    Column: 69   
+Token Identifier           Line: 22    Column: 70    Lexem: Klasse
+Token Identifier           Line: 22    Column: 78    Lexem: um
+Token Identifier           Line: 22    Column: 81    Lexem: die
+Token Identifier           Line: 22    Column: 85    Lexem: Funktionalitaet
+Token Identifier           Line: 22    Column: 101   Lexem: zu
+Token Identifier           Line: 22    Column: 104   Lexem: testen
+Token Identifier           Line: 25    Column: 1     Lexem: Makefiles
+Token Identifier           Line: 25    Column: 11    Lexem: werden
+Token Identifier           Line: 25    Column: 18    Lexem: benoetigt
+Token Identifier           Line: 25    Column: 29    Lexem: um
+Token Identifier           Line: 25    Column: 32    Lexem: das
+Token Identifier           Line: 25    Column: 36    Lexem: Compilieren
+Token Identifier           Line: 25    Column: 48    Lexem: und
+Token Identifier           Line: 25    Column: 52    Lexem: Linken
+Token Identifier           Line: 25    Column: 59    Lexem: automatisiert
+Token Identifier           Line: 25    Column: 73    Lexem: durch
+Token Identifier           Line: 25    Column: 79    Lexem: das
+Token Identifier           Line: 25    Column: 83    Lexem: Tool
+Token Identifier           Line: 25    Column: 88    Lexem: make
+Token Identifier           Line: 25    Column: 93    Lexem: ausfuehren
+Token Identifier           Line: 25    Column: 104   Lexem: zu
+Token Identifier           Line: 25    Column: 107   Lexem: lassen
+Token Identifier           Line: 27    Column: 1     Lexem: Level
+Token Colon                Line: 27    Column: 6    
+Token Identifier           Line: 27    Column: 8     Lexem: ohne
+Token Identifier           Line: 27    Column: 13    Lexem: Makefile
+Token Identifier           Line: 27    Column: 22    Lexem: Kenntnisse
+Token Identifier           Line: 28    Column: 1     Lexem: Im
+Token Identifier           Line: 28    Column: 4     Lexem: Makefile
+Token Identifier           Line: 28    Column: 13    Lexem: im
+Token Identifier           Line: 28    Column: 16    Lexem: Teilprojekt
+Token Identifier           Line: 28    Column: 28    Lexem: Automat
+Token Identifier           Line: 28    Column: 36    Lexem: sind
+Token Identifier           Line: 28    Column: 41    Lexem: alle
+Token Identifier           Line: 28    Column: 46    Lexem: Schritte
+Token Identifier           Line: 28    Column: 55    Lexem: zum
+Token Identifier           Line: 28    Column: 59    Lexem: Compilieren
+Token Identifier           Line: 28    Column: 71    Lexem: und
+Token Identifier           Line: 28    Column: 75    Lexem: Linken
+Token Identifier           Line: 28    Column: 82    Lexem: ausfuehrlich
+Token Identifier           Line: 28    Column: 95    Lexem: aufgelistet
+Token Identifier           Line: 31    Column: 1     Lexem: Level
+Token Colon                Line: 31    Column: 6    
+Token Identifier           Line: 31    Column: 8     Lexem: wenig
+Token Identifier           Line: 31    Column: 14    Lexem: Makefile
+Token Minus                Line: 31    Column: 22   
+Token Identifier           Line: 31    Column: 23    Lexem: Kenntnisse
+Token Identifier           Line: 32    Column: 1     Lexem: Im
+Token Identifier           Line: 32    Column: 4     Lexem: Makefile
+Token Identifier           Line: 32    Column: 13    Lexem: im
+Token Identifier           Line: 32    Column: 16    Lexem: Teilprojekt
+Token Identifier           Line: 32    Column: 28    Lexem: Buffer
+Token Identifier           Line: 32    Column: 35    Lexem: werden
+Token Identifier           Line: 32    Column: 42    Lexem: die
+Token Identifier           Line: 32    Column: 46    Lexem: benoetigten
+Token Identifier           Line: 32    Column: 58    Lexem: Verzeichnisse
+Token Identifier           Line: 32    Column: 72    Lexem: ueber
+Token Identifier           Line: 32    Column: 78    Lexem: Variablen
+Token Identifier           Line: 32    Column: 88    Lexem: definiert
+Token Identifier           Line: 35    Column: 1     Lexem: Level
+Token Colon                Line: 35    Column: 6    
+Token Identifier           Line: 35    Column: 8     Lexem: gute
+Token Identifier           Line: 35    Column: 13    Lexem: Makefile
+Token Minus                Line: 35    Column: 21   
+Token Identifier           Line: 35    Column: 22    Lexem: Kenntnisse
+Token Identifier           Line: 36    Column: 1     Lexem: Im
+Token Identifier           Line: 36    Column: 4     Lexem: Makefile
+Token Identifier           Line: 36    Column: 13    Lexem: im
+Token Identifier           Line: 36    Column: 16    Lexem: Teilprojekt
+Token Identifier           Line: 36    Column: 28    Lexem: Symboltable
+Token Identifier           Line: 36    Column: 40    Lexem: und
+Token Identifier           Line: 36    Column: 44    Lexem: Scanner
+Token Identifier           Line: 36    Column: 52    Lexem: wird
+Token Identifier           Line: 36    Column: 57    Lexem: auch
+Token Identifier           Line: 36    Column: 62    Lexem: die
+Token Identifier           Line: 36    Column: 66    Lexem: Liste
+Token Identifier           Line: 36    Column: 72    Lexem: der
+Token Identifier           Line: 36    Column: 76    Lexem: zu
+Token Identifier           Line: 36    Column: 79    Lexem: compilierenden
+Token Identifier           Line: 36    Column: 94    Lexem: Files
+Token Identifier           Line: 36    Column: 100   Lexem: ueber
+Token Identifier           Line: 36    Column: 106   Lexem: Variablen
+Token Identifier           Line: 36    Column: 116   Lexem: deklariert
+Token Identifier           Line: 39    Column: 1     Lexem: Aufbau
+Token Identifier           Line: 39    Column: 8     Lexem: des
+Token Identifier           Line: 39    Column: 12    Lexem: Makefiles
+Token Colon                Line: 39    Column: 21   
+Token Identifier           Line: 40    Column: 2     Lexem: Definition
+Token Identifier           Line: 40    Column: 13    Lexem: der
+Token Identifier           Line: 40    Column: 17    Lexem: Variablen
+Token Identifier           Line: 41    Column: 2     Lexem: Targets
+Token Identifier           Line: 41    Column: 10    Lexem: zum
+Token Identifier           Line: 41    Column: 14    Lexem: Bauen
+Token Identifier           Line: 41    Column: 20    Lexem: des
+Token Identifier           Line: 41    Column: 24    Lexem: Tests
+Token Identifier           Line: 41    Column: 31    Lexem: Targets
+Token Identifier           Line: 41    Column: 39    Lexem: sind
+Token Identifier           Line: 41    Column: 44    Lexem: Sprungziele
+Token Identifier           Line: 41    Column: 57    Lexem: die
+Token Identifier           Line: 41    Column: 61    Lexem: durch
+Token Identifier           Line: 41    Column: 67    Lexem: make
+Token Identifier           Line: 41    Column: 72    Lexem: ausgefuehrt
+Token Identifier           Line: 41    Column: 84    Lexem: werden
+Token Identifier           Line: 41    Column: 91    Lexem: k
+Token Identifier           Line: 41    Column: 94    Lexem: nnen
+Token Identifier           Line: 43    Column: 1     Lexem: Im
+Token Identifier           Line: 43    Column: 4     Lexem: Terminalfenster
+Token Identifier           Line: 43    Column: 20    Lexem: k
+Token Identifier           Line: 43    Column: 23    Lexem: nnen
+Token Identifier           Line: 43    Column: 28    Lexem: die
+Token Identifier           Line: 43    Column: 32    Lexem: targets
+Token Identifier           Line: 43    Column: 40    Lexem: so
+Token Identifier           Line: 43    Column: 43    Lexem: aufgerufen
+Token Identifier           Line: 43    Column: 54    Lexem: werden
+Token Colon                Line: 43    Column: 60   
+Token Identifier           Line: 43    Column: 62    Lexem: make
+Token Identifier           Line: 43    Column: 67    Lexem: target
+Token Identifier           Line: 45    Column: 1     Lexem: In
+Token Identifier           Line: 45    Column: 4     Lexem: der
+Token Identifier           Line: 45    Column: 8     Lexem: Eclipse
+Token Identifier           Line: 45    Column: 16    Lexem: View
+Token Identifier           Line: 45    Column: 22    Lexem: Make
+Token Identifier           Line: 45    Column: 27    Lexem: Targets
+Token Identifier           Line: 45    Column: 36    Lexem: erscheinen
+Token Identifier           Line: 45    Column: 47    Lexem: die
+Token Identifier           Line: 45    Column: 51    Lexem: Targets
+Token Identifier           Line: 45    Column: 59    Lexem: der
+Token Identifier           Line: 45    Column: 63    Lexem: einzelnen
+Token Identifier           Line: 45    Column: 73    Lexem: Makefiles
+Token Identifier           Line: 45    Column: 84    Lexem: die
+Token Identifier           Line: 45    Column: 88    Lexem: dann
+Token Identifier           Line: 45    Column: 93    Lexem: mit
+Token Identifier           Line: 45    Column: 97    Lexem: einem
+Token Identifier           Line: 45    Column: 103   Lexem: Doppelklick
+Token Identifier           Line: 45    Column: 115   Lexem: ausgefuehrt
+Token Identifier           Line: 45    Column: 127   Lexem: werden
+Token Identifier           Line: 45    Column: 134   Lexem: k
+Token Identifier           Line: 45    Column: 137   Lexem: nnen
+Token Identifier           Line: 48    Column: 1     Lexem: Aufbau
+Token Identifier           Line: 48    Column: 8     Lexem: der
+Token Identifier           Line: 48    Column: 12    Lexem: Targets
+Token Identifier           Line: 50    Column: 5     Lexem: target
+Token Colon                Line: 50    Column: 11   
+Token Identifier           Line: 50    Column: 13    Lexem: dependencies
+Token Bracket '['          Line: 51    Column: 5    
+Token Identifier           Line: 51    Column: 6     Lexem: tab
+Token Bracket ']'          Line: 51    Column: 9    
+Token Identifier           Line: 51    Column: 11    Lexem: system
+Token Identifier           Line: 51    Column: 18    Lexem: command
+Token Identifier           Line: 54    Column: 3     Lexem: Compilation
+Token Identifier           Line: 54    Column: 15    Lexem: commands
+Token Colon                Line: 54    Column: 23   
+Token Identifier           Line: 56    Column: 1     Lexem: classA
+Token Identifier           Line: 56    Column: 8     Lexem: o
+Token Colon                Line: 56    Column: 9    
+Token Identifier           Line: 56    Column: 11    Lexem: classA
+Token Identifier           Line: 56    Column: 18    Lexem: cpp
+Token Identifier           Line: 56    Column: 22    Lexem: classA
+Token Identifier           Line: 56    Column: 29    Lexem: h
+Token Bracket '['          Line: 57    Column: 5    
+Token Identifier           Line: 57    Column: 6     Lexem: tab
+Token Bracket ']'          Line: 57    Column: 9    
+Token Identifier           Line: 57    Column: 11    Lexem: g
+Token Plus                 Line: 57    Column: 12   
+Token Plus                 Line: 57    Column: 13   
+Token Minus                Line: 57    Column: 15   
+Token Identifier           Line: 57    Column: 16    Lexem: c
+Token Minus                Line: 57    Column: 18   
+Token Identifier           Line: 57    Column: 19    Lexem: g
+Token Identifier           Line: 57    Column: 21    Lexem: classA
+Token Identifier           Line: 57    Column: 28    Lexem: cpp
+Token Minus                Line: 57    Column: 32   
+Token Identifier           Line: 57    Column: 33    Lexem: o
+Token Identifier           Line: 57    Column: 35    Lexem: classA
+Token Identifier           Line: 57    Column: 42    Lexem: o
+Token Identifier           Line: 59    Column: 3     Lexem: target
+Token Identifier           Line: 59    Column: 10    Lexem: classA
+Token Identifier           Line: 59    Column: 17    Lexem: o
+Token Identifier           Line: 59    Column: 19    Lexem: ist
+Token Identifier           Line: 59    Column: 23    Lexem: abhaengig
+Token Identifier           Line: 59    Column: 33    Lexem: von
+Token Identifier           Line: 59    Column: 37    Lexem: der
+Token Identifier           Line: 59    Column: 41    Lexem: Source
+Token Identifier           Line: 59    Column: 48    Lexem: Datei
+Token Identifier           Line: 59    Column: 54    Lexem: classA
+Token Identifier           Line: 59    Column: 61    Lexem: cpp
+Token Identifier           Line: 59    Column: 65    Lexem: und
+Token Identifier           Line: 59    Column: 69    Lexem: classA
+Token Identifier           Line: 59    Column: 76    Lexem: h
+Token Identifier           Line: 60    Column: 3     Lexem: g
+Token Plus                 Line: 60    Column: 4    
+Token Plus                 Line: 60    Column: 5    
+Token Identifier           Line: 60    Column: 7     Lexem: Compiler
+Token Identifier           Line: 60    Column: 16    Lexem: Aufruf
+Token Identifier           Line: 61    Column: 3     Lexem: das
+Token Identifier           Line: 61    Column: 7     Lexem: File
+Token Identifier           Line: 61    Column: 12    Lexem: classA
+Token Identifier           Line: 61    Column: 19    Lexem: cpp
+Token Identifier           Line: 61    Column: 23    Lexem: wird
+Token Identifier           Line: 61    Column: 28    Lexem: nur
+Token Identifier           Line: 61    Column: 32    Lexem: compiliert
+Token Bracket '('          Line: 61    Column: 43   
+Token Minus                Line: 61    Column: 44   
+Token Identifier           Line: 61    Column: 45    Lexem: c
+Token Bracket ')'          Line: 61    Column: 46   
+Token Identifier           Line: 61    Column: 48    Lexem: und
+Token Identifier           Line: 61    Column: 52    Lexem: in
+Token Identifier           Line: 61    Column: 55    Lexem: das
+Token Identifier           Line: 61    Column: 59    Lexem: Outputfile
+Token Bracket '('          Line: 61    Column: 70   
+Token Minus                Line: 61    Column: 71   
+Token Identifier           Line: 61    Column: 72    Lexem: o
+Token Bracket ')'          Line: 61    Column: 73   
+Token Identifier           Line: 61    Column: 75    Lexem: classA
+Token Identifier           Line: 61    Column: 82    Lexem: o
+Token Identifier           Line: 61    Column: 84    Lexem: geschrieben
+Token Identifier           Line: 65    Column: 1     Lexem: classB
+Token Identifier           Line: 65    Column: 8     Lexem: o
+Token Colon                Line: 65    Column: 9    
+Token Identifier           Line: 65    Column: 11    Lexem: classB
+Token Identifier           Line: 65    Column: 18    Lexem: cpp
+Token Identifier           Line: 65    Column: 22    Lexem: classB
+Token Identifier           Line: 65    Column: 29    Lexem: h
+Token Identifier           Line: 65    Column: 31    Lexem: classA
+Token Identifier           Line: 65    Column: 38    Lexem: h
+Token Bracket '['          Line: 66    Column: 5    
+Token Identifier           Line: 66    Column: 6     Lexem: tab
+Token Bracket ']'          Line: 66    Column: 9    
+Token Identifier           Line: 66    Column: 11    Lexem: g
+Token Plus                 Line: 66    Column: 12   
+Token Plus                 Line: 66    Column: 13   
+Token Minus                Line: 66    Column: 15   
+Token Identifier           Line: 66    Column: 16    Lexem: c
+Token Minus                Line: 66    Column: 18   
+Token Identifier           Line: 66    Column: 19    Lexem: g
+Token Identifier           Line: 66    Column: 21    Lexem: classB
+Token Identifier           Line: 66    Column: 28    Lexem: cpp
+Token Minus                Line: 66    Column: 32   
+Token Identifier           Line: 66    Column: 33    Lexem: o
+Token Identifier           Line: 66    Column: 35    Lexem: classB
+Token Identifier           Line: 66    Column: 42    Lexem: o
+Token Identifier           Line: 68    Column: 3     Lexem: target
+Token Identifier           Line: 68    Column: 10    Lexem: classB
+Token Identifier           Line: 68    Column: 17    Lexem: o
+Token Identifier           Line: 68    Column: 19    Lexem: ist
+Token Identifier           Line: 68    Column: 23    Lexem: abhaengig
+Token Identifier           Line: 68    Column: 33    Lexem: von
+Token Identifier           Line: 68    Column: 37    Lexem: der
+Token Identifier           Line: 68    Column: 41    Lexem: Source
+Token Identifier           Line: 68    Column: 48    Lexem: Datei
+Token Identifier           Line: 68    Column: 54    Lexem: classB
+Token Identifier           Line: 68    Column: 61    Lexem: cpp
+Token Identifier           Line: 68    Column: 66    Lexem: classB
+Token Identifier           Line: 68    Column: 73    Lexem: h
+Token Identifier           Line: 68    Column: 75    Lexem: und
+Token Identifier           Line: 68    Column: 79    Lexem: classA
+Token Identifier           Line: 68    Column: 86    Lexem: h
+Token Identifier           Line: 69    Column: 3     Lexem: g
+Token Plus                 Line: 69    Column: 4    
+Token Plus                 Line: 69    Column: 5    
+Token Identifier           Line: 69    Column: 7     Lexem: Compiler
+Token Identifier           Line: 70    Column: 3     Lexem: das
+Token Identifier           Line: 70    Column: 7     Lexem: File
+Token Identifier           Line: 70    Column: 12    Lexem: classB
+Token Identifier           Line: 70    Column: 19    Lexem: cpp
+Token Identifier           Line: 70    Column: 23    Lexem: wird
+Token Identifier           Line: 70    Column: 28    Lexem: nur
+Token Identifier           Line: 70    Column: 32    Lexem: compiliert
+Token Bracket '('          Line: 70    Column: 43   
+Token Minus                Line: 70    Column: 44   
+Token Identifier           Line: 70    Column: 45    Lexem: c
+Token Bracket ')'          Line: 70    Column: 46   
+Token Identifier           Line: 70    Column: 48    Lexem: und
+Token Identifier           Line: 70    Column: 52    Lexem: in
+Token Identifier           Line: 70    Column: 55    Lexem: das
+Token Identifier           Line: 70    Column: 59    Lexem: Outputfile
+Token Bracket '('          Line: 70    Column: 70   
+Token Minus                Line: 70    Column: 71   
+Token Identifier           Line: 70    Column: 72    Lexem: o
+Token Bracket ')'          Line: 70    Column: 73   
+Token Identifier           Line: 70    Column: 75    Lexem: classB
+Token Identifier           Line: 70    Column: 82    Lexem: o
+Token Identifier           Line: 70    Column: 84    Lexem: geschrieben
+Token Identifier           Line: 73    Column: 3     Lexem: Link
+Token Identifier           Line: 73    Column: 8     Lexem: command
+Token Colon                Line: 73    Column: 15   
+Token Identifier           Line: 74    Column: 1     Lexem: my
+Token Identifier           Line: 74    Column: 4     Lexem: program
+Token Colon                Line: 74    Column: 11   
+Token Identifier           Line: 74    Column: 13    Lexem: classA
+Token Identifier           Line: 74    Column: 20    Lexem: o
+Token Identifier           Line: 74    Column: 22    Lexem: classB
+Token Identifier           Line: 74    Column: 29    Lexem: o
+Token Bracket '['          Line: 75    Column: 4    
+Token Identifier           Line: 75    Column: 5     Lexem: tab
+Token Bracket ']'          Line: 75    Column: 8    
+Token Identifier           Line: 75    Column: 10    Lexem: g
+Token Plus                 Line: 75    Column: 11   
+Token Plus                 Line: 75    Column: 12   
+Token Minus                Line: 75    Column: 14   
+Token Identifier           Line: 75    Column: 15    Lexem: g
+Token Identifier           Line: 75    Column: 17    Lexem: classA
+Token Identifier           Line: 75    Column: 24    Lexem: o
+Token Identifier           Line: 75    Column: 26    Lexem: classB
+Token Identifier           Line: 75    Column: 33    Lexem: o
+Token Minus                Line: 75    Column: 35   
+Token Identifier           Line: 75    Column: 36    Lexem: o
+Token Identifier           Line: 75    Column: 38    Lexem: my
+Token Identifier           Line: 75    Column: 41    Lexem: program
+Token Identifier           Line: 77    Column: 3     Lexem: target
+Token Identifier           Line: 77    Column: 10    Lexem: my
+Token Identifier           Line: 77    Column: 13    Lexem: program
+Token Identifier           Line: 77    Column: 21    Lexem: ist
+Token Identifier           Line: 77    Column: 25    Lexem: abhaengig
+Token Identifier           Line: 77    Column: 35    Lexem: von
+Token Identifier           Line: 77    Column: 39    Lexem: den
+Token Identifier           Line: 77    Column: 43    Lexem: Objektdateien
+Token Identifier           Line: 77    Column: 57    Lexem: classA
+Token Identifier           Line: 77    Column: 64    Lexem: o
+Token Identifier           Line: 77    Column: 66    Lexem: und
+Token Identifier           Line: 77    Column: 70    Lexem: classB
+Token Identifier           Line: 77    Column: 77    Lexem: o
+Token Identifier           Line: 78    Column: 3     Lexem: g
+Token Plus                 Line: 78    Column: 4    
+Token Plus                 Line: 78    Column: 5    
+Token Identifier           Line: 78    Column: 7     Lexem: Linker
+Token Identifier           Line: 80    Column: 3     Lexem: options
+Token Colon                Line: 80    Column: 10   
+Token Minus                Line: 81    Column: 4    
+Token Identifier           Line: 81    Column: 5     Lexem: c
+Token Identifier           Line: 81    Column: 9     Lexem: Kompilieren
+Token Identifier           Line: 81    Column: 21    Lexem: ohne
+Token Identifier           Line: 81    Column: 26    Lexem: zu
+Token Identifier           Line: 81    Column: 29    Lexem: linken
+Token Minus                Line: 82    Column: 4    
+Token Identifier           Line: 82    Column: 5     Lexem: g
+Token Identifier           Line: 82    Column: 10    Lexem: debugging
+Token Identifier           Line: 82    Column: 20    Lexem: infos
+Token Identifier           Line: 82    Column: 26    Lexem: erzeugen
+Token Minus                Line: 83    Column: 4    
+Token Identifier           Line: 83    Column: 5     Lexem: o
+Token Identifier           Line: 83    Column: 7     Lexem: file
+Token Identifier           Line: 83    Column: 16    Lexem: object
+Token Minus                Line: 83    Column: 22   
+Token Identifier           Line: 83    Column: 23    Lexem: file
+Token Identifier           Line: 83    Column: 28    Lexem: name
+Token Identifier           Line: 87    Column: 1     Lexem: http
+Token Colon                Line: 87    Column: 5    
+Token Identifier           Line: 87    Column: 8     Lexem: www
+Token Identifier           Line: 87    Column: 12    Lexem: gnu
+Token Identifier           Line: 87    Column: 16    Lexem: org
+Token Identifier           Line: 87    Column: 20    Lexem: software
+Token Identifier           Line: 87    Column: 29    Lexem: make
+Token Identifier           Line: 89    Column: 1     Lexem: http
+Token Colon                Line: 89    Column: 5    
+Token Identifier           Line: 89    Column: 8     Lexem: mrbook
+Token Identifier           Line: 89    Column: 15    Lexem: org
+Token Identifier           Line: 89    Column: 19    Lexem: blog
+Token Identifier           Line: 89    Column: 24    Lexem: tutorials
+Token Identifier           Line: 89    Column: 34    Lexem: make
+Token Identifier           Line: 91    Column: 1     Lexem: http
+Token Colon                Line: 91    Column: 5    
+Token Identifier           Line: 91    Column: 8     Lexem: de
+Token Identifier           Line: 91    Column: 11    Lexem: wikipedia
+Token Identifier           Line: 91    Column: 21    Lexem: org
+Token Identifier           Line: 91    Column: 25    Lexem: wiki
+Token Identifier           Line: 91    Column: 30    Lexem: Make
+Token Identifier           Line: 93    Column: 1     Lexem: http
+Token Colon                Line: 93    Column: 5    
+Token Identifier           Line: 93    Column: 8     Lexem: www
+Token Identifier           Line: 93    Column: 12    Lexem: sethi
+Token Identifier           Line: 93    Column: 18    Lexem: org
+Token Identifier           Line: 93    Column: 22    Lexem: classes
+Token Identifier           Line: 93    Column: 30    Lexem: cet375
+Token Identifier           Line: 93    Column: 37    Lexem: lab
+Token Identifier           Line: 93    Column: 41    Lexem: notes
+Token Identifier           Line: 93    Column: 47    Lexem: lab
+Token Integer              Line: 93    Column: 51    Value: 4
+Token Identifier           Line: 93    Column: 54    Lexem: makefile
+Token Identifier           Line: 93    Column: 63    Lexem: and
+Token Identifier           Line: 93    Column: 67    Lexem: compilation
+Token Identifier           Line: 93    Column: 79    Lexem: html
+Token EOF                  Line: 94    Column: 1    

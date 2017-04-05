@@ -1,6 +1,6 @@
 #include "../includes/cstring.h"
 
-int strcmp(char const * str1, char const * str2) {
+int __strcmp(char const * str1, char const * str2) {
 		if (str1 == nullptr || str2 == nullptr)
 			return str1 == str2;
 
@@ -11,16 +11,16 @@ int strcmp(char const * str1, char const * str2) {
 		return *str1 - *str2;
 }
 
-char * strdup (char const * source) {
-	auto length = strlen(source) + 1;
+char * __strdup (char const * source) {
+	auto length = __strlen(source) + 1;
 
 	char *destination = new char[length];
-	strncpy(destination, source, length);
+	__strncpy(destination, source, length);
 
 	return destination;
 }
 
-unsigned int strlen (char const *const data) {
+unsigned int __strlen (char const *const data) {
 	unsigned int result = 0;
 	if (data != nullptr)
 		while(data[result] != '\0') result++;
@@ -28,7 +28,7 @@ unsigned int strlen (char const *const data) {
 	return result;
 }
 
-char * strncpy ( char * destination, char const * source, unsigned int num) {
+char * __strncpy ( char * destination, char const * source, unsigned int num) {
 	if (source == nullptr)
 		return nullptr;
 

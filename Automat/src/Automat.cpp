@@ -6,9 +6,9 @@
 #include "../includes/Automat.h"
 #include <ctype.h>
 
-action Automat::charEval(char c) {
+action Automat::charEval(unsigned char c) {
 
-	if (isdigit(c)) {
+	if (isdigit( c )) {
 		return this->stateEval(DIGIT);
 	}
 	if(isalpha(c)) {

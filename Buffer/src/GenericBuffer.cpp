@@ -47,7 +47,7 @@ char GenericBuffer::ungetChar(unsigned int count) {
 
 			// Switch to the last character in previous node
 			this->setCurrentNode(*curr->_prev);
-			this->_currentPos += strlen(curr->_prev->_data) - 1;
+			this->_currentPos += __strlen(curr->_prev->_data) - 1;
 		}
 		else
 		{

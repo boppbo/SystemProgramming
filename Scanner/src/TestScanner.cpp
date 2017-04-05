@@ -8,8 +8,8 @@ using namespace std;
 
 void printToken(Token* t, ostream &str) {
 	str << "Token " << left << setw(20) << t->getTypeAsString();
-	str << " Line: " << t->_line;
-	str << " Column: " << t->_column;
+	str << " Line: " << setw(5) << t->_line;
+	str << " Column: " << setw(5) << t->_column;
 
 	switch (t->_type) {
 	case TOKEN_INTEGER:
