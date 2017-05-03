@@ -8,8 +8,8 @@ using namespace std;
 
 void printToken(Token* t, ostream &str) {
 	str << "Token " << left << setw(20) << t->getTypeAsString();
-	str << " Line: " << t->_line;
-	str << " Column: " << t->_column;
+	str << " Line: " << setw(5) << t->_line;
+	str << " Column: " << setw(5) << t->_column;
 
 	switch (t->_type) {
 	case TOKEN_INTEGER:
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	if (argc != 3)
 		return EXIT_FAILURE;
 
-	// disable debug messages.
+	// disable debug messages. 
 	clog.setstate(std::ios_base::failbit);
 
 	Symboltable st;

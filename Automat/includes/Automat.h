@@ -38,7 +38,7 @@ typedef enum {
 class Automat {
 public:
 	Automat() { }
-	action charEval(char c);
+	action charEval(unsigned char c);
 	state getCurrentState() const { return this->_currentState; }
 
 protected:

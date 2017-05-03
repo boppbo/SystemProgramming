@@ -1,13 +1,15 @@
-New Line :*efwref
-rgreg
-eth
-eth
-tehtehthhth thteh *:
-ewgergre gre ger gerg orengernogerger ger g
-ergr
-ger
- ger
-hethjtejet jte jte jet hz5 33g23g 43f34g 34 g34g34r
-gber
-ge
-r b re3244325433g3 ht35h53h35, §FG$G 00=:0=====:=
+=: =:=:==:= =:=:=:=: :=
+
+dies ist ein /*Kommentar
+
+Kommentar*/ 
+4 Zeile ok
+
+/*kjfksjf*jfjskfj*/
+test
+/*Kommentar***/
+sichtbar
+*/
+end
+
+

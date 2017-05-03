@@ -1,0 +1,5 @@
+﻿  Scanner.cpp
+c:\users\hen\documents\visual studio 2017\projects\systemprogramming_vs\symboltable\includes\info.h(23): warning C4373: "Info::compareLex": Virtuelle Funktion überschreibt "Information::compareLex". Vorherige Compilerversionen werden nicht überschrieben, wenn sich die Parameter nur durch const/volatile-Qualifizierer unterscheiden.
+  c:\users\hen\documents\visual studio 2017\projects\systemprogramming_vs\symboltable\includes\information.h(14): note: Siehe Deklaration von "Information::compareLex"
+  SystemProgramming_VS.vcxproj -> C:\Users\Hen\Documents\Visual Studio 2017\Projects\SystemProgramming_VS\Debug\SystemProgramming_VS.exe
+  SystemProgramming_VS.vcxproj -> C:\Users\Hen\Documents\Visual Studio 2017\Projects\SystemProgramming_VS\Debug\SystemProgramming_VS.pdb (Partial PDB)
