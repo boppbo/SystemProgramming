@@ -14,3 +14,4 @@ BUFFERDIR := Buffer
 COMMONDIR := Common
 SYMBOLTABLEDIR := Symboltable
 SCANNERDIR := Scanner
+PARSERDIR := Parser

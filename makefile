@@ -5,7 +5,7 @@ include Constants.mk
 # $@ --> linke Seite vom Doppelpunkt
 # $^ --> rechte Seite vom Doppelpunkt
 
-SUBDIRS = $(AUTOMATDIR) $(BUFFERDIR) $(COMMONDIR) $(SYMBOLTABLEDIR) $(SCANNERDIR)
+SUBDIRS = $(AUTOMATDIR) $(BUFFERDIR) $(COMMONDIR) $(SYMBOLTABLEDIR) $(SCANNERDIR) $(PARSERDIR)
 SUBDIRSCLEAN = $(addprefix clean,$(SUBDIRS))
 .PHONY: all clean $(SUBDIRS) $(SUBDIRSCLEAN)
 
@@ -13,9 +13,10 @@ all: $(SUBDIRS)
 $(SUBDIRS): Common
 	$(shell mkdir -p $(@)/$(OBJDIR))
 	$(shell mkdir -p $(@)/$(BINDIRTEST))
-	$(MAKE) -C $(@) $(if $(findstring Scanner,$@), makeTestScanner, $(@)OBJTarget)
+	$(MAKE) -C $(@) $(if $(findstring Parser,$@), makeTestParser, $(@)OBJTarget)
 
 Scanner: Automat Buffer Symboltable
+Parser: Scanner
 
 clean: $(SUBDIRSCLEAN)
 $(SUBDIRSCLEAN): clean%:
