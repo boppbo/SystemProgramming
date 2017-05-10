@@ -4,8 +4,10 @@
     "\\Parser",
     "\\Parser\\includes",
     "\\Parser\\includes\\Nodes",
-    "\\Parser\\src"
+    "\\Parser\\src",
+    "\\Scanner",
+    "\\Scanner\\includes"
   ],
-  "SelectedNode": "\\Parser\\includes\\Nodes",
+  "SelectedNode": "\\Parser\\src\\Node.cpp",
   "PreviewInSolutionExplorer": false
 }

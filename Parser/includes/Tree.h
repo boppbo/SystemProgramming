@@ -8,9 +8,11 @@
 #ifndef PARSER_INCLUDES_TREE_H_
 #define PARSER_INCLUDES_TREE_H_
 
+#include "Nodes\Node.h"
+
 class Tree {
 public:
-	Tree();
+	Tree(ProgNode* ProgNode);
 	virtual ~Tree();
 
 	virtual void accept(class TreeVisitor &visitor) = 0;

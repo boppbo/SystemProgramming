@@ -9,13 +9,17 @@
 #define PARSER_INCLUDES_LEAF_H_
 
 #include "Tree.h"
+#include "../../Scanner/includes/Token.h"
 
 class Leaf: public Tree {
 public:
 	Leaf();
 	virtual ~Leaf();
-
 	void accept(TreeVisitor &visitor);
+
+private:
+	Token* token;
+	Leaf();
 };
 
 #endif /* PARSER_INCLUDES_LEAF_H_ */
