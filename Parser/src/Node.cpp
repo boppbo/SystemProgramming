@@ -5,7 +5,7 @@
  *      Author: boris
  */
 
-#include "../includes/Node.h"
+#include "../includes/Nodes/Node.h"
 #include "../includes/TreeVisitor.h"
 
 Node::Node() {
