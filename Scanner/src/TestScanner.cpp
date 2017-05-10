@@ -1,5 +1,4 @@
 #include "../includes/Scanner.h"
-#include "../../Symboltable/includes/Symboltable.h"
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -32,8 +31,10 @@ int main(int argc, char *argv[]) {
 	if (argc != 3)
 		return EXIT_FAILURE;
 
-	//disable debug messages.
+#ifndef DEBUG
+	//disable debug messages for release.
 	clog.setstate(std::ios_base::failbit);
+#endif
 
 	Symboltable st;
 	Scanner scanner(argv[1], st);

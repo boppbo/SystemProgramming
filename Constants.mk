@@ -4,7 +4,7 @@ SRCDIR := src
 OBJDIR := objs
 BINDIRTEST := debug
 
-DEBUG := -g
+DEBUG := -g -DDEBUG
 OPTIMIZE := -O2
 CFLAGS = -Wall -Wextra -std=c++11 -march=native $(DEBUG) -c
 LFLAGS = -Wall $(DEBUG)
