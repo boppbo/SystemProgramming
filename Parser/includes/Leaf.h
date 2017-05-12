@@ -11,13 +11,14 @@
 #include "Tree.h"
 #include "../../Scanner/includes/Token.h"
 
-class Leaf: public Tree {
+class Leaf: public Node {
 public:
 	Leaf();
 	virtual ~Leaf();
 	void accept(TreeVisitor &visitor);
 
 private:
+
 	Token* token;
 	Leaf();
 };

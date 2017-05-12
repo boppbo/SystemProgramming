@@ -18,7 +18,7 @@ public:
 	virtual NodeType getType();
 	virtual void addChild(Node* node);
 	virtual void setType(NodeType set);
-private:
+protected:
 	NodeType type;
 };
 

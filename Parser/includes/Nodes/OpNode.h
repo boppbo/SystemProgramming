@@ -20,34 +20,45 @@ public:
 		switch (token->_type)
 		{
 			case TOKEN_PLUS: {
-				
+				type = PlusType;
 				break;
 			}
 			case TOKEN_MINUS: {
+				type = MinusType;
 				break;
 			}
 			case TOKEN_STAR: {
+				type = StarType;
 				break;
 			}
 			case TOKEN_COLON: {
+				type = CollonType;
 				break;
 			}
 			case TOKEN_SMALLER: {
+				type = SmallerType;
 				break;
 			}
 			case TOKEN_GREATER: {
+				type = GreaterType;
 				break;
 			}
 			case TOKEN_EQUALS: {
+				type = EqualsType;
 				break;
 			}
 			case TOKEN_ASSIGN: {
+				type = AssigneType;
 				break;
 			}
 			case TOKEN_ASSIGN2: {
+				type = Assigne2Type;
 				break;
 			}
-			default: break;
+			default: {
+				type = ErrorType;
+				break;
+			}
 		}
 	}
 	virtual ~OpNode();

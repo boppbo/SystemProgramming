@@ -8,6 +8,6 @@
     "\\Scanner",
     "\\Scanner\\includes"
   ],
-  "SelectedNode": "\\Parser\\src\\Node.cpp",
+  "SelectedNode": "\\Parser\\includes\\Nodes\\Node.h",
   "PreviewInSolutionExplorer": false
 }

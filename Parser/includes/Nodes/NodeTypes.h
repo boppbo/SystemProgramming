@@ -3,12 +3,23 @@
 
 #include "Node.h"
 
-enum NodeType
-{
-	NO_TYPE = 0,
-	INTEGER_TYPE,
+enum NodeType {
+	NoType = 0,				
+	IntegerType,				
+	IntArrayType,			
+	ArrayType,					
+	ErrorType,					
+	PlusType,				
+	MinusType,				
+	CollonType,				
+	StarType,			
+	GreaterType,			
+	SmallerType,			
+	EqualsType,			
+	AssigneType,			
+	Assigne2Type,				
 
-
+	ENUM_END_MARKER 
 };
 
 #endif /* PARSER_INCLUDES_NODES_NodeTypes_H_ */

@@ -13,6 +13,7 @@
 
 class ProgNode : public Node {
 	
+	DeclsNode* decls;
 
 public:
 	ProgNode();
