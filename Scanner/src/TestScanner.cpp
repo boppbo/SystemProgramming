@@ -28,7 +28,7 @@ void printToken(Token* t, ostream &str) {
 	str << endl;
 }
 
-int main(int argc, char *argv[]) {
+int main2(int argc, char *argv[]) {
 	if (argc != 3)
 		return EXIT_FAILURE;
 

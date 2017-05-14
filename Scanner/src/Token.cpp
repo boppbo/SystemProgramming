@@ -25,5 +25,9 @@ char const* const Token::_tokenTypes[] = {
 	"If",
 	"While",
 	"Unknown",
-	"EOF"
+	"EOF",
+	"Else",
+	"Int",
+	"Read",
+	"Write"
 };
