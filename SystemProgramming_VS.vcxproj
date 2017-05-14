@@ -117,6 +117,10 @@
     <ClInclude Include="Common\includes\Collections\deque.h" />
     <ClInclude Include="Common\includes\Collections\trackingDeque.h" />
     <ClInclude Include="Common\includes\cstring.h" />
+    <ClInclude Include="Parser\includes\Leaf.h" />
+    <ClInclude Include="Parser\includes\Node.h" />
+    <ClInclude Include="Parser\includes\Parser.h" />
+    <ClInclude Include="Parser\includes\ParseTree.h" />
     <ClInclude Include="Scanner\includes\Scanner.h" />
     <ClInclude Include="Scanner\includes\Token.h" />
     <ClInclude Include="Symboltable\includes\Info.h" />
@@ -132,6 +136,11 @@
     <ClCompile Include="Common\src\Collections\deque.cpp" />
     <ClCompile Include="Common\src\Collections\trackingDeque.cpp" />
     <ClCompile Include="Common\src\cstring.cpp" />
+    <ClCompile Include="Parser\src\Leaf.cpp" />
+    <ClCompile Include="Parser\src\Node.cpp" />
+    <ClCompile Include="Parser\src\Parser.cpp" />
+    <ClCompile Include="Parser\src\ParseTree.cpp" />
+    <ClCompile Include="Parser\src\TestParser.cpp" />
     <ClCompile Include="Scanner\src\Scanner.cpp" />
     <ClCompile Include="Scanner\src\TestScanner.cpp" />
     <ClCompile Include="Scanner\src\Token.cpp" />

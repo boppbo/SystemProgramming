@@ -54,6 +54,18 @@
     <ClInclude Include="Symboltable\includes\Symboltable.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Parser\includes\Parser.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Parser\includes\ParseTree.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Parser\includes\Leaf.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Parser\includes\Node.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\src\Collections\trackingDeque.cpp">
@@ -87,6 +99,21 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Common\src\cstring.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser\src\Parser.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser\src\ParseTree.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser\src\Leaf.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser\src\Node.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser\src\TestParser.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
