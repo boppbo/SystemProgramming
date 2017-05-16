@@ -1,8 +1,5 @@
-int i;
+int a;
 int[3] i;
-else
-ELSE
-if
-read
-Write
-write
+
+a := 123;
+i[1] := 123 + a;

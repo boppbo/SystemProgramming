@@ -7,7 +7,7 @@ class Leaf : public Node {
 public:
 	Leaf(Token* token);
 	Token* _token;
-	void print(int indent = 0);
+	virtual void print(int indent = 0) /*override*/;
 private:
 	
 };

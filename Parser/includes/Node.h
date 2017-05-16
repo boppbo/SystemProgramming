@@ -64,7 +64,7 @@ public:
 	vector<Node*> _children;
 	Node() {};
 	Node(nodeType type);
-	void print(int indent = 0);
+	virtual void print(int indent = 0);
 
 	virtual const char* getTypeAsString() const {
 		return _nodeTypes[this->_type];

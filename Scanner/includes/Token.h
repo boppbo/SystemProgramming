@@ -66,6 +66,21 @@ public:
 	char const * getUnknownReason() {
 		return this->_unknownReason;
 	}
+	bool isOperator() {
+		switch (this->_type)
+		{
+			case TOKEN_PLUS: return true;
+			case TOKEN_MINUS: return true;
+			case TOKEN_STAR: return true;
+			case TOKEN_COLON: return true;
+			case TOKEN_SMALLER: return true;
+			case TOKEN_GREATER: return true;
+			case TOKEN_EQUALS: return true;
+			case TOKEN_ASSIGN2: return true;
+			case TOKEN_AND: return true;
+			default: return false;
+		}
+	}
 private:
 	char const * _unknownReason = nullptr;
 	static char const* const _tokenTypes[];

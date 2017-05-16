@@ -9,7 +9,7 @@ Leaf::Leaf(Token* token) {
 
 void Leaf::print(int indent)
 {
-	cout << " " << setw(indent) << this->_token->getTypeAsString() << " \n";
+	cout << " " << setw(indent) << "Leaf ("<<  this->_token->getTypeAsString() << ") \n";
 	for each(Node* child in this->_children) {
 		if(child != nullptr)
 			child->print(indent+4);

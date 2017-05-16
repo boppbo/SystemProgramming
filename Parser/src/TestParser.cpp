@@ -18,6 +18,12 @@ int main(int argc, char *argv[]) {
 	ofstream out(argv[2]);
 	Parser parser(scanner);
 
-	Node* pt = parser.parse();
-	pt->print();
+	cout << "parsing ... \n";
+	try {
+		Node* pt = parser.parse();
+		pt->print();
+	}
+	catch (exception e) {
+		cout << e.what() << "\n" << "stop";
+	}
 }
