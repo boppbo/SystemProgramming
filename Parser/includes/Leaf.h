@@ -10,17 +10,16 @@
 
 #include "Tree.h"
 #include "../../Scanner/includes/Token.h"
+#include "Nodes\Node.h"
 
 class Leaf: public Node {
-public:
-	Leaf();
-	virtual ~Leaf();
-	void accept(TreeVisitor &visitor);
-
-private:
-
+protected:
 	Token* token;
 	Leaf();
+public:
+	virtual ~Leaf();
+	virtual void accept(class TreeVisitor &visitor);
+
 };
 
 #endif /* PARSER_INCLUDES_LEAF_H_ */

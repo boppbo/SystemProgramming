@@ -15,7 +15,7 @@ public:
 	Node();
 	virtual ~Node();
 	void accept(TreeVisitor &visitor);
-	virtual NodeType getType();
+	virtual TType getType();
 	virtual void addChild(Node* node);
 	virtual void setType(NodeType set);
 protected:
@@ -43,4 +43,7 @@ protected:
 #include "Op_ExpNode.h"
 #include "Op_ExpEpsNode.h"
 #include "OpNode.h"
+
+#include "IdentNode.h"
+#include "IntegerNode.h"
 #endif /* PARSER_INCLUDES_NODE_H_ */

@@ -73,9 +73,16 @@ void Scanner::add_token_identifier() {
 		auto type = TOKEN_IDENTIFIER;
 		if (isIF(this->_currLexem) )
 			type = TOKEN_IF;
+		else if (isELSE(this->_currLexem))
+			type = TOKEN_ELSE;
 		else if (isWHILE(this->_currLexem))
 			type = TOKEN_WHILE;
-
+		else if (isREAD(this->_currLexem))
+			type = TOKEN_READ;
+		else if (isWRITE(this->_currLexem))
+			type = TOKEN_WRITE;
+		else if (isINT(this->_currLexem))
+			type = TOKEN_INT;
 		this->makeToken(type);
 		//Identifiers AND Keywords get added to the symbol table
 		this->_returnToken->_info = &this->_st.getOrAdd(this->_currLexem);
@@ -180,6 +187,17 @@ bool Scanner::isIF(char const * const string) const {
 	return false;
 }
 
+bool Scanner::isELSE(char const * const string) const {
+
+	if (strcmp(string, "ELSE") == 0)
+		return true;
+
+	if (strcmp(string, "else") == 0)
+		return true;
+
+	return false;
+}
+
 bool Scanner::isWHILE(char const * const string) const {
 
 	if (strcmp(string, "WHILE") == 0)
@@ -187,5 +205,29 @@ bool Scanner::isWHILE(char const * const string) const {
 
 	if (strcmp(string, "while") == 0)
 		return true;
+	return false;
+}
+
+bool Scanner::isREAD(char const * const string) const {
+
+	if (strcmp(string, "read") == 0)
+		return true;
+
+	return false;
+}
+
+bool Scanner::isWRITE(char const * const string) const {
+
+	if (strcmp(string, "write") == 0)
+		return true;
+
+	return false;
+}
+
+bool Scanner::isINT(char const * const string) const {
+
+	if (strcmp(string, "int") == 0)
+		return true;
+
 	return false;
 }

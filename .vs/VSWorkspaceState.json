@@ -6,8 +6,11 @@
     "\\Parser\\includes\\Nodes",
     "\\Parser\\src",
     "\\Scanner",
-    "\\Scanner\\includes"
+    "\\Scanner\\src",
+    "\\Symboltable",
+    "\\Symboltable\\includes",
+    "\\Symboltable\\src"
   ],
-  "SelectedNode": "\\Parser\\includes\\Nodes\\Node.h",
+  "SelectedNode": "\\Scanner\\src\\Scanner.cpp",
   "PreviewInSolutionExplorer": false
 }

@@ -6,32 +6,30 @@
 */
 
 
-#ifndef PARSER_INCLUDES_DeclsNode_H_
-#define PARSER_INCLUDES_DeclsNode_H_
+#ifndef PARSER_INCLUDES_DeclNode_H_
+#define PARSER_INCLUDES_DeclNode_H_
 
 #include "Node.h"
 
-class DeclsNode : public Node {
+class DeclNode : public Node {
 
-	DeclNode* decl;
-	DeclsNode* nextDecls;
+	ArrayNode* array;
+	IdentNode* ident;
 
 public:
 	DeclNode() {
-		decl = 0;
-		nextDecls = 0;
+		this->array = 0;
 	}
 	virtual ~DeclNode() {
-		delete decl;
-		delete nextDecls;
+		delete this->array;
 	}
-	virtual void addChild(DeclsNode* newDecls) {
-		nextDecls = newDecls;
+	virtual void addChild(ArrayNode* newArray) {
+		this->array = newArray;
 	}
-	virtual void addChild(DeclNode* newDecl) {
-		decl = newDecl;
+	virtual void addChild(IdentNode* newIdent) {
+		this->ident = newIdent;
 	}
-	virtual void accept(class TreeVisitor &visitor) = 0;
+	virtual void accept(class TreeVisitor &visitor)
 };
 
-#endif /* PARSER_INCLUDES_DeclsNode_H_ */
+#endif /* PARSER_INCLUDES_DeclNode_H_ */

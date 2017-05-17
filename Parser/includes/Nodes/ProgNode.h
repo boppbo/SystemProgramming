@@ -14,12 +14,21 @@
 class ProgNode : public Node {
 	
 	DeclsNode* decls;
+	StatementsNode* statements;
 
 public:
-	ProgNode();
+	ProgNode() {
+		this->decls = 0;
+		this->statements = 0;
+	}
 	virtual ~ProgNode();
-	virtual ProgNode getProgNote();
-	virtual void accept(class TreeVisitor &visitor) = 0;
+	virtual void addChild(DeclsNode* newDecls) {
+		this->decls = newDecls;
+	}
+	virtual void addChild(StatementsNode* newStatements) {
+		this->statements = newStatements;
+	}
+	virtual void accept(class TreeVisitor &visitor);
 };
 
 #endif /* PARSER_INCLUDES_ProgNode_H_ */

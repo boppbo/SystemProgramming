@@ -53,7 +53,11 @@ private:
 	void makeToken(TType type, int unget = 1);
 	void debugActions(char const* action) const;
 	bool isIF(char const * const string) const;
+	bool isELSE(char const * const string) const;
 	bool isWHILE(char const * const string) const;
+	bool isREAD(char const * const string) const;
+	bool isWRITE(char const * const string) const;
+	bool isINT(char const * const string) const;
 
 
 	void(Scanner::*tansition_action[11])() = {

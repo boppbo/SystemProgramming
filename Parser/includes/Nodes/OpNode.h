@@ -11,6 +11,7 @@
 
 #include "../Leaf.h"
 #include "../../../Scanner/includes/Token.h"
+#include "Node.h"
 
 class OpNode : public Leaf {
 
@@ -62,7 +63,7 @@ public:
 		}
 	}
 	virtual ~OpNode();
-	virtual void accept(class TreeVisitor &visitor) = 0;
+	virtual void accept(class TreeVisitor &visitor);
 };
 
 #endif /* PARSER_INCLUDES_OpNode_H_ */

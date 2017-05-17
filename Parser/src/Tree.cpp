@@ -7,12 +7,11 @@
 
 #include "../includes/Tree.h"
 
-Tree::Tree() {
-	// TODO Auto-generated constructor stub
-
+Tree::Tree(ProgNode* ProgNode) {
+	this->prog = prog;
 }
 
 Tree::~Tree() {
-	// TODO Auto-generated destructor stub
+	delete this->prog;
 }
 

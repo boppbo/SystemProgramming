@@ -32,7 +32,11 @@ enum TType {
 	TOKEN_IF,
 	TOKEN_WHILE,
 	TOKEN_UNKNOWN,
-	TOKEN_EOF
+	TOKEN_EOF,
+	TOKEN_INT,
+	TOKEN_WRITE,
+	TOKEN_READ,
+	TOKEN_ELSE
 };
 
 class Token {
@@ -62,6 +66,7 @@ public:
 	char const * getUnknownReason() {
 		return this->_unknownReason;
 	}
+	static char const* const _tokenTypes[];
 private:
 	char const * _unknownReason = nullptr;
 	static char const* const _tokenTypes[];

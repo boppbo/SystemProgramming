@@ -18,20 +18,20 @@ class DeclsNode : public Node {
 
 public:
 	DeclsNode() {
-		decl = 0;
-		nextDecls = 0;
+		this->decl = 0;
+		this->nextDecls = 0;
 	}
 	virtual ~DeclsNode() {
-		delete decl;
-		delete nextDecls;
+		delete this->decl;
+		delete this->nextDecls;
 	}
 	virtual void addChild(DeclsNode* newDecls) {
-		nextDecls = newDecls;
+		this->nextDecls = newDecls;
 	}
 	virtual void addChild(DeclNode* newDecl) {
-		decl = newDecl;
+		this->decl = newDecl;
 	}
-	virtual void accept(class TreeVisitor &visitor) = 0;
+	virtual void accept(class TreeVisitor &visitor);
 };
 
 #endif /* PARSER_INCLUDES_DeclsNode_H_ */

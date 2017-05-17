@@ -11,11 +11,12 @@
 #include "Nodes\Node.h"
 
 class Tree {
+	ProgNode* prog;
 public:
 	Tree(ProgNode* ProgNode);
 	virtual ~Tree();
 
-	virtual void accept(class TreeVisitor &visitor) = 0;
+	virtual void accept(class TreeVisitor &visitor);
 };
 
 #endif /* PARSER_INCLUDES_TREE_H_ */
