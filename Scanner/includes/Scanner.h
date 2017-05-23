@@ -11,7 +11,7 @@
 #include "../../Automat/includes/Automat.h"
 #include "../../Buffer/includes/Buffer.h"
 #include "../../Symboltable/includes/Symboltable.h"
-#include "../includes/Token.h"
+#include "../../Symboltable/includes/Token.h"
 
 class Scanner {
 
@@ -52,9 +52,6 @@ private:
 	TType getSignType(char const* string) const;
 	void makeToken(TType type, int unget = 1);
 	void debugActions(char const* action) const;
-	bool isIF(char const * const string) const;
-	bool isWHILE(char const * const string) const;
-
 
 	void(Scanner::*tansition_action[11])() = {
 		&Scanner::nothing,

@@ -14,4 +14,4 @@ cleanScanner:
 	rm -rf $(OBJDIR)/*.o
 	rm -rf $(BINDIRTEST)/*
 
-ScannerOBJTarget: $(OBJDIR)/Token.o $(OBJDIR)/Scanner.o
+ScannerOBJTarget: $(OBJDIR)/Scanner.o

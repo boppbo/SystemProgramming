@@ -9,6 +9,7 @@
 #ifndef CUSTOMCSTRING_H_
 #define CUSTOMCSTRING_H_
 
+char * strcat(char const * str1, char const* str2);
 int strcmp (char const * str1, char const * str2);
 char * strdup (char const * source);
 unsigned int strlen (char const *const data);

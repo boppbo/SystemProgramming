@@ -23,7 +23,7 @@ protected:
 
 private:
 	void initSymbols();
-	void addKeyword(char const * const lexem);
+	void addKeyword(char const * const lexem, TType tokenType);
 
 	SearchableDeque* const _buckets;
 	unsigned int const _bucketSize;

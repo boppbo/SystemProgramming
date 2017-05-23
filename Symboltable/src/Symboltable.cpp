@@ -45,21 +45,21 @@ unsigned int Symboltable::getHashCode(char const * lexem) const {
 }
 
 void Symboltable::initSymbols() {
-	this->addKeyword("int");
+	this->addKeyword("int", TOKEN_INT);
 
-	this->addKeyword("if");
-	this->addKeyword("IF");
-	this->addKeyword("else");
-	this->addKeyword("ELSE");
-	this->addKeyword("while");
-	this->addKeyword("WHILE");
+	this->addKeyword("if", TOKEN_IF);
+	this->addKeyword("IF", TOKEN_IF);
+	this->addKeyword("else", TOKEN_ELSE);
+	this->addKeyword("ELSE", TOKEN_ELSE);
+	this->addKeyword("while", TOKEN_WHILE);
+	this->addKeyword("WHILE", TOKEN_WHILE);
 
-	this->addKeyword("read");
-	this->addKeyword("write");
+	this->addKeyword("read", TOKEN_READ);
+	this->addKeyword("write", TOKEN_WRITE);
 }
 
-void Symboltable::addKeyword(char const * const lexem) {
+void Symboltable::addKeyword(char const * const lexem, TType tokenType) {
 	this->_buckets[this->getHashCode(lexem)]
 	//no need for string table as keywords are already in non-volatile memory;
-	.push(new Info(lexem, true));
+	.push(new Info(lexem, tokenType));
 }

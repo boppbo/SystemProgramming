@@ -14,17 +14,20 @@
 
 class Info : public Information {
 public:
-	explicit Info(char const * name, bool isKeyword = false)
-	: name(strdup(name)), _varType(isKeyword ? VarType::KEYWORD : VarType::INT) { }
+	explicit Info(char const * name, TType tokenType = TOKEN_IDENTIFIER)
+	: _name(strdup(name)), _tokenType(tokenType), _varType(VarType::UNKNOWN) { }
 
 	virtual ~Info() {
-		delete[] this->name;
+		delete[] this->_name;
 	}
 	virtual bool compareLex(char const * lexem) const override {
-		return strcmp(lexem, this->name) == 0;
+		return strcmp(lexem, this->_name) == 0;
 	}
-	virtual char* getName() const override{
-		return strdup(this->name);
+	virtual char* getName() const override {
+		return strdup(this->_name);
+	}
+	virtual TType getTokenType() const override {
+		return this->_tokenType;
 	}
 
 	virtual bool isArray() const override {
@@ -33,20 +36,22 @@ public:
 	virtual bool isInteger() const override {
 		return this->_varType == VarType::INT;
 	}
-	virtual bool isKeyword() const override {
-		return this->_varType == VarType::KEYWORD;
-	}
 
 	virtual void setIsArray(bool isArray) override {
-		if (this->_varType == VarType::KEYWORD)
+		if (this->_tokenType != TOKEN_IDENTIFIER)
 			throw std::domain_error("Invalid operation for keywords!");
+		if (this->_varType != VarType::UNKNOWN)
+			throw std::domain_error(strcat("Identifier already declared: ", this->_name));
 
 		this->_varType = isArray ? VarType::INTARR : VarType::INT;
 	}
 
+protected:
+	enum class VarType : char { INT, INTARR, UNKNOWN };
+
 private:
-	enum class VarType : char { INT, INTARR, KEYWORD };
-	char* const name;
+	char* const _name;
+	TType _tokenType;
 	VarType _varType;
 };
 

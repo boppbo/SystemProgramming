@@ -1,5 +1,20 @@
 #include "../includes/cstring.h"
 
+char * strcat(char const * str1, char const* str2) {
+	if (str1 == nullptr || str2 == nullptr) {
+		return nullptr;
+	}
+
+	auto str1len = strlen(str1);
+	auto str2len = strlen(str2);
+
+	char *destination = new char[str1len + str2len + 1];
+	strncpy(destination, str1, str1len+1);
+	strncpy(destination + str1len , str2, str2len+1);
+
+	return destination;
+}
+
 int strcmp(char const * str1, char const * str2) {
 		if (str1 == nullptr || str2 == nullptr)
 			return str1 == str2;

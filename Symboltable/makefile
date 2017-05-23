@@ -15,4 +15,4 @@ cleanSymboltable:
 	rm -rf $(OBJDIR)/*.o
 	rm -rf $(BINDIRTEST)/*
 
-SymboltableOBJTarget: $(OBJDIR)/StringTable.o $(OBJDIR)/Symboltable.o
+SymboltableOBJTarget: $(OBJDIR)/StringTable.o $(OBJDIR)/Symboltable.o $(OBJDIR)/Token.o

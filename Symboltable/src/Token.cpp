@@ -23,7 +23,11 @@ char const* const Token::_tokenTypes[] = {
 	"Bracket '{'", "Bracket '}'",
 	"Bracket '['", "Bracket ']'",
 	"If",
+	"Int",
+	"Else",
+	"Read",
 	"While",
+	"Write",
 	"Unknown",
 	"EOF"
 };

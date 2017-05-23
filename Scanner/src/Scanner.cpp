@@ -5,8 +5,8 @@
  *      Author: knad0001
  */
 
-#include "../includes/Scanner.h"
 #include "../../Common/includes/cstring.h"
+#include "../includes/Scanner.h"
 #include <iostream>
 #include <cerrno>
 using namespace std;
@@ -70,15 +70,9 @@ void Scanner::add_token_identifier() {
 		this->_returnToken->setUnknownReason("Identifier too long.");
 	}
 	else {
-		auto type = TOKEN_IDENTIFIER;
-		if (isIF(this->_currLexem) )
-			type = TOKEN_IF;
-		else if (isWHILE(this->_currLexem))
-			type = TOKEN_WHILE;
-
-		this->makeToken(type);
-		//Identifiers AND Keywords get added to the symbol table
-		this->_returnToken->_info = &this->_st.getOrAdd(this->_currLexem);
+		auto *info = &this->_st.getOrAdd(this->_currLexem);
+		this->makeToken(info->getTokenType());
+		this->_returnToken->_info = info;
 	}
 }
 void Scanner::add_token_sign() {
@@ -165,25 +159,4 @@ TType Scanner::getSignType(char const * const string) const {
 	if (strcmp(string, "]") == 0) return TOKEN_BRACKETS2_CLOSE;
 	return TOKEN_UNKNOWN;
 
-}
-
-bool Scanner::isIF(char const * const string) const {
-
-	if(strcmp(string, "IF") == 0)
-		return true;
-
-	if (strcmp(string, "if") == 0)
-			return true;
-
-	return false;
-}
-
-bool Scanner::isWHILE(char const * const string) const {
-
-	if (strcmp(string, "WHILE") == 0)
-		return true;
-
-	if (strcmp(string, "while") == 0)
-		return true;
-	return false;
 }
