@@ -5,9 +5,14 @@
 class Leaf : public Node {
 
 public:
-	Leaf(Token* token);
+	Leaf(Token* token, nodeType type);
 	Token* _token;
+	nodeType _type;
+	OpType _opType;
 	virtual void print(int indent = 0) /*override*/;
+	virtual void accept(Visitor* visitor) {
+	visitor->visit(this);
+	}
 private:
 	
 };

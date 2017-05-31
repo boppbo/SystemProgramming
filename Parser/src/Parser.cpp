@@ -7,11 +7,12 @@ Parser::Parser(Scanner* scanner) {
 }
 
 Node* Parser::parse() {
+	ParseTree* ProgTree = new ParseTree(prog());
 	return prog();
 }
 
 Node* Parser::prog() {	
-	Node* progNode = new Node(Prog);
+	Node* progNode = new Node(nodeType::Prog);
 	this->_currentToken = this->_scanner->nextToken();
 
 	// optinal DECLS
@@ -24,14 +25,14 @@ Node* Parser::prog() {
 
 Node* Parser::decls() {
 
-	Node* decls = new Node(Decls);
+	Node* decls = new Node(nodeType::Decls);
 
 	Node* decl = Parser::decl();
 	if (decl == nullptr)	// Epsilon übergang
 		return nullptr;
 	addNode(decls, decl);
 	// expect Semicolon
-	addLeaf(decls, TOKEN_SEMICOLON);
+	addLeaf(decls, TOKEN_SEMICOLON, nodeType::Keyword);
 	// optional DECLS
 	addNode(decls, Parser::decls(), true);
 
@@ -42,13 +43,13 @@ Node* Parser::decl() {
 	if (this->_currentToken->_type != TOKEN_INT)
 		return nullptr;
 	
-	Node* decl = new Node(Decl);
+	Node* decl = new Node(nodeType::Decl);
 	// expect int
-	addLeaf(decl, TOKEN_INT);
+	addLeaf(decl, TOKEN_INT, nodeType::Keyword);
 	//optional array
 	addNode(decl, Parser::array(), true);
 	// expect Identifier
-	addLeaf(decl, TOKEN_IDENTIFIER);
+	addLeaf(decl, TOKEN_IDENTIFIER, nodeType::Identifier);
 
 	return decl;
 }
@@ -58,27 +59,27 @@ Node* Parser::array()
 	if (this->_currentToken->_type != TOKEN_BRACKETS2_OPEN)
 		return nullptr;
 
-	Node* array = new Node(Array);
+	Node* array = new Node(nodeType::Array);
 	// exprect "["
-	addLeaf(array, TOKEN_BRACKETS2_OPEN);
+	addLeaf(array, TOKEN_BRACKETS2_OPEN, nodeType::Keyword);
 	// erwate Integer
-	addLeaf(array, TOKEN_INTEGER);
+	addLeaf(array, TOKEN_INTEGER, nodeType::INTEGER);
 	// erwarte "]"
-	addLeaf(array, TOKEN_BRACKETS2_CLOSE);
+	addLeaf(array, TOKEN_BRACKETS2_CLOSE, nodeType::Keyword);
 
 	return array;
 }
 
 Node* Parser::statements() {
 	
-	Node* statements = new Node(Statements);
+	Node* statements = new Node(nodeType::Statements);
 
 	Node* statement = Parser::statement();
 	if (statement == nullptr)	// Epsilon übergang
 		return nullptr;
 	statements->_children.push_back(statement);
 	// expect Semicolon
-	addLeaf(statements, TOKEN_SEMICOLON);
+	addLeaf(statements, TOKEN_SEMICOLON, nodeType::Keyword);
 
 	Node* followingStatements = Parser::statements();
 	if (followingStatements != nullptr)
@@ -109,13 +110,13 @@ Node* Parser::statement() {
 
 Node * Parser::statementIdent()
 {
-	Node* statementIdent = new Node(StatementIdent);
-	addLeaf(statementIdent, TOKEN_IDENTIFIER);
+	Node* statementIdent = new Node(nodeType::StatementIdent);
+	addLeaf(statementIdent, TOKEN_IDENTIFIER, nodeType::Identifier);
 
 	// optional INDEX
 	addNode(statementIdent, Parser::index(), true);
 	// Erwarte ":="
-	addLeaf(statementIdent, TOKEN_ASSIGN);
+	addLeaf(statementIdent, TOKEN_ASSIGN, nodeType::Keyword);
 	// expect EXP
 	addNode(statementIdent, Parser::exp());
 
@@ -124,53 +125,53 @@ Node * Parser::statementIdent()
 
 Node * Parser::statementWrite()
 {
-	Node* statementWrite = new Node(StatementWrite);
-	addLeaf(statementWrite, TOKEN_WRITE);
+	Node* statementWrite = new Node(nodeType::StatementWrite);
+	addLeaf(statementWrite, TOKEN_WRITE, nodeType::Keyword);
 
 	// Erwarte "("
-	addLeaf(statementWrite, TOKEN_BRACKETS0_OPEN);
+	addLeaf(statementWrite, TOKEN_BRACKETS0_OPEN, nodeType::Keyword);
 	// Erwarte EXP
 	addNode(statementWrite, Parser::exp());
 	// Erwarte ")"
-	addLeaf(statementWrite, TOKEN_BRACKETS0_CLOSE);
+	addLeaf(statementWrite, TOKEN_BRACKETS0_CLOSE, nodeType::Keyword);
 
 	return statementWrite;
 }
 
 Node * Parser::statementRead()
 {
-	Node* statementRead = new Node(StatementWrite);
-	addLeaf(statementRead, TOKEN_READ);
+	Node* statementRead = new Node(nodeType::StatementWrite);
+	addLeaf(statementRead, TOKEN_READ, nodeType::Keyword);
 	// expect "("
-	addLeaf(statementRead, TOKEN_BRACKETS0_OPEN);
+	addLeaf(statementRead, TOKEN_BRACKETS0_OPEN, nodeType::Keyword);
 	// expect Identifier
-	addLeaf(statementRead, TOKEN_IDENTIFIER);
+	addLeaf(statementRead, TOKEN_IDENTIFIER, nodeType::Identifier);
 	// optional INDEX
 	addNode(statementRead, Parser::index(), true);
 	// expect ")"
-	addLeaf(statementRead, TOKEN_BRACKETS0_CLOSE);
+	addLeaf(statementRead, TOKEN_BRACKETS0_CLOSE, nodeType::Keyword);
 
 	return statementRead;
 }
 
 Node * Parser::statementIf()
 {
-	Node* statementIf = new Node(StatementIf);
-	addLeaf(statementIf, TOKEN_IF);
+	Node* statementIf = new Node(nodeType::StatementIf);
+	addLeaf(statementIf, TOKEN_IF, nodeType::Keyword);
 
 	// Erwarte "("
-	addLeaf(statementIf, TOKEN_BRACKETS0_OPEN);
+	addLeaf(statementIf, TOKEN_BRACKETS0_OPEN, nodeType::Keyword);
 	// Erwarte EXP
 	Node* exp = Parser::exp();
 	if (exp == nullptr)
 		parseError();
 	statementIf->_children.push_back(exp);
 	// Erwarte ")"
-	addLeaf(statementIf, TOKEN_BRACKETS0_CLOSE);
+	addLeaf(statementIf, TOKEN_BRACKETS0_CLOSE, nodeType::Keyword);
 	// Erwarte STATEMENT
 	addNode(statementIf, Parser::statement());
 	// Erwarte "ELSE"
-	addLeaf(statementIf, TOKEN_ELSE);
+	addLeaf(statementIf, TOKEN_ELSE, nodeType::Keyword);
 	// Erwarte STATEMENT
 	addNode(statementIf, Parser::statement());
 
@@ -179,18 +180,18 @@ Node * Parser::statementIf()
 
 Node * Parser::statementWhile()
 {
-	Node* statementWhile = new Node(StatementWrite);
-	addLeaf(statementWhile, TOKEN_WHILE);
+	Node* statementWhile = new Node(nodeType::StatementWrite);
+	addLeaf(statementWhile, TOKEN_WHILE, nodeType::Keyword);
 
 	// expect "("
-	addLeaf(statementWhile, TOKEN_BRACKETS0_OPEN);
+	addLeaf(statementWhile, TOKEN_BRACKETS0_OPEN, nodeType::Keyword);
 	// expect EXP
 	Node* exp = Parser::exp();
 	if (exp == nullptr)
 		parseError();
 	statementWhile->_children.push_back(exp);
 	// expect ")"
-	addLeaf(statementWhile, TOKEN_BRACKETS0_CLOSE);
+	addLeaf(statementWhile, TOKEN_BRACKETS0_CLOSE, nodeType::Keyword);
 	// expect STATEMENT
 	addNode(statementWhile, Parser::statement());
 
@@ -199,12 +200,12 @@ Node * Parser::statementWhile()
 
 Node * Parser::statementBlock()
 {
-	Node* statementWrite = new Node(StatementWrite);
-	addLeaf(statementWrite, TOKEN_BRACKETS1_OPEN);
+	Node* statementWrite = new Node(nodeType::StatementWrite);
+	addLeaf(statementWrite, TOKEN_BRACKETS1_OPEN, nodeType::Keyword);
 	// expect STATEMENTS
 	addNode(statementWrite, Parser::statements());
 	// exprec "}"
-	addLeaf(statementWrite, TOKEN_BRACKETS1_CLOSE);
+	addLeaf(statementWrite, TOKEN_BRACKETS1_CLOSE, nodeType::Keyword);
 
 	return statementWrite;
 }
@@ -214,20 +215,20 @@ Node * Parser::index()
 	if (this->_currentToken->_type != TOKEN_BRACKETS2_OPEN)
 		return nullptr;
 	
-	Node* index = new Node(Index);
+	Node* index = new Node(nodeType::Index);
 	// exprect "["
-	addLeaf(index, TOKEN_BRACKETS2_OPEN);
+	addLeaf(index, TOKEN_BRACKETS2_OPEN, nodeType::Keyword);
 	// expect EXP
 	addNode(index, Parser::exp());
 	// exprect "]"
-	addLeaf(index, TOKEN_BRACKETS2_CLOSE);
+	addLeaf(index, TOKEN_BRACKETS2_CLOSE, nodeType::Keyword);
 	
 	return index;
 }
 
 Node * Parser::exp()
 {
-	Node* exp = new Node(Exp);	
+	Node* exp = new Node(nodeType::Exp);
 	//expect EXP2
 	addNode(exp, Parser::exp2());
 	//optional OP_EXP
@@ -241,12 +242,12 @@ Node * Parser::exp2()
 	switch (this->_currentToken->_type) {
 	case TOKEN_BRACKETS0_OPEN:
 	{
-		Node* exp2exp = new Node(Exp2);
-		addLeaf(exp2exp, TOKEN_BRACKETS0_OPEN);
+		Node* exp2exp = new Node(nodeType::Exp2);
+		addLeaf(exp2exp, TOKEN_BRACKETS0_OPEN, nodeType::Keyword);
 		// expect EXP
 		addNode(exp2exp, Parser::exp());
 		// expect ")"
-		addLeaf(exp2exp, TOKEN_BRACKETS0_CLOSE);
+		addLeaf(exp2exp, TOKEN_BRACKETS0_CLOSE, nodeType::Keyword);
 
 		return exp2exp;
 	}
@@ -267,7 +268,7 @@ Node * Parser::exp2()
 
 Node * Parser::op_exp()
 {
-	Node* op_exp = new Node(OpExp);
+	Node* op_exp = new Node(nodeType::OpExp);
 	
 	Node* op = Parser::op();
 	if(op == nullptr)
@@ -284,16 +285,16 @@ Node * Parser::op()
 	if(! this->_currentToken->isOperator())
 		return nullptr;
 
-	Node* op = new Node(Op);
-	addLeaf(op, this->_currentToken->_type);
+	Node* op = new Node(nodeType::Op);
+	addLeaf(op, this->_currentToken->_type, nodeType::Op);
 
 	return op;
 }
 
 Node * Parser::exp2Ident()
 {
-	Node* exp2Ident = new Node(Exp2Ident);
-	addLeaf(exp2Ident, TOKEN_IDENTIFIER);
+	Node* exp2Ident = new Node(nodeType::Exp2Ident);
+	addLeaf(exp2Ident, TOKEN_IDENTIFIER, nodeType::Identifier);
 	// optional INDEX
 	addNode(exp2Ident, Parser::index(), true);
 
@@ -302,16 +303,16 @@ Node * Parser::exp2Ident()
 
 Node * Parser::exp2Int()
 {
-	Node* exp2Integer = new Node(Exp2Int);
-	addLeaf(exp2Integer, TOKEN_INTEGER);
+	Node* exp2Integer = new Node(nodeType::Exp2Int);
+	addLeaf(exp2Integer, TOKEN_INTEGER, nodeType::INTEGER);
 
 	return exp2Integer;
 }
 
 Node * Parser::exp2Minus()
 {
-	Node* exp2Minus = new Node(Exp2Minus);
-	addLeaf(exp2Minus, TOKEN_MINUS);
+	Node* exp2Minus = new Node(nodeType::Exp2Minus);
+	addLeaf(exp2Minus, TOKEN_MINUS, nodeType::Keyword);
 	// expect EXP2
 	addNode(exp2Minus, Parser::exp2());
 	return exp2Minus;
@@ -319,8 +320,8 @@ Node * Parser::exp2Minus()
 
 Node * Parser::exp2Neg()
 {
-	Node* exp2Neg = new Node(Exp2Neg);
-	addLeaf(exp2Neg, TOKEN_NOT);
+	Node* exp2Neg = new Node(nodeType::Exp2Neg);
+	addLeaf(exp2Neg, TOKEN_NOT, nodeType::Keyword);
 	// expect EXP2
 	addNode(exp2Neg, Parser::exp2());
 	return exp2Neg;
@@ -349,10 +350,10 @@ void Parser::addNode(Node* parent, Node* child, bool optional) {
 		parent->_children.push_back(child);
 }
 
-void Parser::addLeaf(Node* parent, TType expectedTokenType) {
+void Parser::addLeaf(Node* parent, TType expectedTokenType, nodeType nodeType) {
 	if (this->_currentToken->_type != expectedTokenType)
 		parseError();
 
-	parent->_children.push_back((Leaf*) new Leaf(this->_currentToken));
+	parent->_children.push_back((Leaf*) new Leaf(this->_currentToken, nodeType));
 	this->_currentToken = this->_scanner->nextToken();
 }

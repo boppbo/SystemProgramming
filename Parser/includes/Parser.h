@@ -34,7 +34,7 @@ private:
 	Scanner* _scanner;
 	Token* _prevToken = nullptr;
 	Token* _currentToken;
-	void addLeaf(Node* parent, TType expectedTokenType);
+	void addLeaf(Node* parent, TType expectedTokenType, nodeType nodeType);
 	void addNode(Node* parent, Node* child, bool optional = false);
 	void parseError();
 
