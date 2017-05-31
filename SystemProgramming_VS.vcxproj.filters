@@ -66,6 +66,12 @@
     <ClInclude Include="Parser\includes\Node.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Parser\includes\SemanticCheck.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Parser\includes\Visitor.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\src\Collections\trackingDeque.cpp">
@@ -114,6 +120,12 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Parser\src\TestParser.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser\src\SemanticCheck.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser\src\Visitor.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

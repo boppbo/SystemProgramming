@@ -1,3 +1,6 @@
+#ifndef LEAF_H
+#define LEAF_H
+
 #include "../../Scanner/includes/Scanner.h"
 #include "Node.h"
 
@@ -17,3 +20,5 @@ public:
 private:
 	
 };
+
+#endif

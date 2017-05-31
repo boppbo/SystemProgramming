@@ -1,8 +1,7 @@
-#include "..//includes/SemanticCheck.h"
+#include "../includes/SemanticCheck.h"
 #include "iostream"
 
 SemanticCheck::SemanticCheck() {
-
 }
 
 SemanticCheck::~SemanticCheck() {
@@ -10,7 +9,7 @@ SemanticCheck::~SemanticCheck() {
 }
 
 void SemanticCheck::check(ParseTree* tree) {
-	tree->getProg->accept(this);
+	tree->_prog->accept(this);
 }
 
 void SemanticCheck::visit(Node* node) {
@@ -225,5 +224,3 @@ void SemanticCheck::visit(Node* node) {
 void SemanticCheck::visit(Leaf* leaf) {
 	
 }
-
-void 

@@ -3,6 +3,7 @@
 
 #include "ParseTree.h"
 #include "Node.h"
+#include "Leaf.h"
 #include "Visitor.h"
 
 class SemanticCheck : public Visitor {

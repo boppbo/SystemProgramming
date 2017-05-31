@@ -121,6 +121,8 @@
     <ClInclude Include="Parser\includes\Node.h" />
     <ClInclude Include="Parser\includes\Parser.h" />
     <ClInclude Include="Parser\includes\ParseTree.h" />
+    <ClInclude Include="Parser\includes\SemanticCheck.h" />
+    <ClInclude Include="Parser\includes\Visitor.h" />
     <ClInclude Include="Scanner\includes\Scanner.h" />
     <ClInclude Include="Scanner\includes\Token.h" />
     <ClInclude Include="Symboltable\includes\Info.h" />
@@ -140,7 +142,9 @@
     <ClCompile Include="Parser\src\Node.cpp" />
     <ClCompile Include="Parser\src\Parser.cpp" />
     <ClCompile Include="Parser\src\ParseTree.cpp" />
+    <ClCompile Include="Parser\src\SemanticCheck.cpp" />
     <ClCompile Include="Parser\src\TestParser.cpp" />
+    <ClCompile Include="Parser\src\Visitor.cpp" />
     <ClCompile Include="Scanner\src\Scanner.cpp" />
     <ClCompile Include="Scanner\src\TestScanner.cpp" />
     <ClCompile Include="Scanner\src\Token.cpp" />

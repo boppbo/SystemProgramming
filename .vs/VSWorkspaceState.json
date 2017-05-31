@@ -4,10 +4,8 @@
     "\\Parser",
     "\\Parser\\includes",
     "\\Parser\\src",
-    "\\Scanner",
     "\\Scanner\\includes",
     "\\Scanner\\src",
-    "\\Symboltable",
     "\\Symboltable\\includes"
   ],
   "SelectedNode": "\\Parser\\src\\TestParser.cpp",

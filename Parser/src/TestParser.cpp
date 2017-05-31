@@ -1,5 +1,7 @@
 #include "../../Scanner/includes/Scanner.h"
 #include "../includes/Parser.h"
+#include "../includes/SemanticCheck.h"
+#include "../includes/ParseTree.h"
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -17,12 +19,14 @@ int main(int argc, char *argv[]) {
 	Scanner* scanner = new Scanner(argv[1], st);
 	ofstream out(argv[2]);
 	Parser parser(scanner);
+	SemanticCheck* check = new SemanticCheck();
 
 	cout << "parsing ... \n";
 	try {
 		Node* pt = parser.parse();
 		pt->print();
-		
+		ParseTree* tree = new ParseTree(pt);
+		check->check(tree);
 	}
 	catch (exception e) {
 		cout << e.what() << "\n" << "stop";
