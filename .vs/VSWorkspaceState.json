@@ -1,9 +1,15 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Parser",
+    "\\Parser\\includes",
+    "\\Parser\\src",
     "\\Scanner",
-    "\\Scanner\\src"
+    "\\Scanner\\includes",
+    "\\Scanner\\src",
+    "\\Symboltable",
+    "\\Symboltable\\includes"
   ],
-  "SelectedNode": "\\Scanner\\src\\TestScanner.cpp",
+  "SelectedNode": "\\Parser\\includes\\Leaf.h",
   "PreviewInSolutionExplorer": false
 }

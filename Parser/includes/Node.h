@@ -1,7 +1,12 @@
+#ifndef NODE_H_
+#define NODE_H_
+
+
 #include "../../Scanner/includes/Scanner.h"
-#include "ParseTree.h"
-#include "Visitor.h"
 #include <vector>
+
+#include "Visitor.h"
+
 using namespace std;
 
 enum nodeType {
@@ -86,7 +91,7 @@ enum OpType {
 	opAnd
 };
 
-class Node : public ParseTree{
+class Node {
 
 public:
 	nodeType _type;
@@ -94,9 +99,6 @@ public:
 	vector<Node*> _children;
 	Node() {};
 	Node(nodeType type);
-	Token getToken() {
-
-	};
 	virtual void print(int indent = 0);
 
 	virtual const char* getTypeAsString() const {
@@ -106,3 +108,5 @@ public:
 		visitor->visit(this);
 	}
 };
+
+#endif

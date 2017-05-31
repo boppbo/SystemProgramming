@@ -1,4 +1,5 @@
 #include "../includes/Visitor.h"
 
-void visit(Node* node);
-void visit(Leaf* leaf);
+
+void Visitor::visit(Node* node){}
+void Visitor::visit(Leaf* leaf){}
