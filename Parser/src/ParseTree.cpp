@@ -1,6 +1,9 @@
 #include "..\includes\ParseTree.h"
 
+ParseTree::ParseTree() {
+	_prog = NULL;
+}
 ParseTree::ParseTree(Node* prog)
 {
-	this->prog = prog;
+	this->_prog = prog;
 }

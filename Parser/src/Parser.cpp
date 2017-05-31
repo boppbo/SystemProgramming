@@ -8,7 +8,7 @@ Parser::Parser(Scanner* scanner) {
 
 Node* Parser::parse() {
 	ParseTree* ProgTree = new ParseTree(prog());
-	return prog();
+	return ProgTree->_prog;
 }
 
 Node* Parser::prog() {	

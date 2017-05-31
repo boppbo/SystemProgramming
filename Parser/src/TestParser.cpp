@@ -22,8 +22,10 @@ int main(int argc, char *argv[]) {
 	try {
 		Node* pt = parser.parse();
 		pt->print();
+		
 	}
 	catch (exception e) {
 		cout << e.what() << "\n" << "stop";
 	}
+	getchar();
 }
