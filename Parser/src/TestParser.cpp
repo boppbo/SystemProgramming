@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
 		Node* pt = parser.parse();
 		pt->print();
 		ParseTree* tree = new ParseTree(pt);
+		cout << "type check ... \n";
 		check->check(tree);
 	}
 	catch (exception e) {

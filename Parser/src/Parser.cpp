@@ -28,8 +28,8 @@ Node* Parser::decls() {
 	Node* decls = new Node(nodeType::Decls);
 
 	Node* decl = Parser::decl();
-	if (decl == nullptr)	// Epsilon übergang
-		return nullptr;
+	if (decl->_isEps)	// Epsilon übergang
+		return decls;
 	addNode(decls, decl);
 	// expect Semicolon
 	addLeaf(decls, TOKEN_SEMICOLON, nodeType::Keyword);
@@ -40,10 +40,12 @@ Node* Parser::decls() {
 }
 
 Node* Parser::decl() {
-	if (this->_currentToken->_type != TOKEN_INT)
-		return nullptr;
-	
 	Node* decl = new Node(nodeType::Decl);
+
+	if (this->_currentToken->_type != TOKEN_INT)
+		return decl;
+	
+	
 	// expect int
 	addLeaf(decl, TOKEN_INT, nodeType::Keyword);
 	//optional array
@@ -56,10 +58,11 @@ Node* Parser::decl() {
 
 Node* Parser::array()
 {
-	if (this->_currentToken->_type != TOKEN_BRACKETS2_OPEN)
-		return nullptr;
-
 	Node* array = new Node(nodeType::Array);
+
+	if (this->_currentToken->_type != TOKEN_BRACKETS2_OPEN)
+		return array;
+	
 	// exprect "["
 	addLeaf(array, TOKEN_BRACKETS2_OPEN, nodeType::Keyword);
 	// erwate Integer
@@ -75,9 +78,11 @@ Node* Parser::statements() {
 	Node* statements = new Node(nodeType::Statements);
 
 	Node* statement = Parser::statement();
-	if (statement == nullptr)	// Epsilon übergang
-		return nullptr;
+	if (statement->_isEps)	// Epsilon übergang
+		return statements;
+
 	statements->_children.push_back(statement);
+
 	// expect Semicolon
 	addLeaf(statements, TOKEN_SEMICOLON, nodeType::Keyword);
 
@@ -104,7 +109,7 @@ Node* Parser::statement() {
 		case TOKEN_WHILE:
 			return statementBlock();
 		default:
-			return nullptr;
+			return new Node(nodeType::StatementBlock);
 	}
 }
 
@@ -162,10 +167,7 @@ Node * Parser::statementIf()
 	// Erwarte "("
 	addLeaf(statementIf, TOKEN_BRACKETS0_OPEN, nodeType::Keyword);
 	// Erwarte EXP
-	Node* exp = Parser::exp();
-	if (exp == nullptr)
-		parseError();
-	statementIf->_children.push_back(exp);
+	addNode(statementIf, Parser::exp());
 	// Erwarte ")"
 	addLeaf(statementIf, TOKEN_BRACKETS0_CLOSE, nodeType::Keyword);
 	// Erwarte STATEMENT
@@ -186,10 +188,7 @@ Node * Parser::statementWhile()
 	// expect "("
 	addLeaf(statementWhile, TOKEN_BRACKETS0_OPEN, nodeType::Keyword);
 	// expect EXP
-	Node* exp = Parser::exp();
-	if (exp == nullptr)
-		parseError();
-	statementWhile->_children.push_back(exp);
+	addNode(statementWhile, Parser::exp());
 	// expect ")"
 	addLeaf(statementWhile, TOKEN_BRACKETS0_CLOSE, nodeType::Keyword);
 	// expect STATEMENT
@@ -212,10 +211,11 @@ Node * Parser::statementBlock()
 
 Node * Parser::index()
 {
-	if (this->_currentToken->_type != TOKEN_BRACKETS2_OPEN)
-		return nullptr;
-	
 	Node* index = new Node(nodeType::Index);
+
+	if (this->_currentToken->_type != TOKEN_BRACKETS2_OPEN)
+		return index;
+
 	// exprect "["
 	addLeaf(index, TOKEN_BRACKETS2_OPEN, nodeType::Keyword);
 	// expect EXP
@@ -271,8 +271,8 @@ Node * Parser::op_exp()
 	Node* op_exp = new Node(nodeType::OpExp);
 	
 	Node* op = Parser::op();
-	if(op == nullptr)
-		return nullptr;
+	if(op->_isEps)
+		return op_exp;
 
 	addNode(op_exp, op);
 	// expect EXP
@@ -282,10 +282,11 @@ Node * Parser::op_exp()
 
 Node * Parser::op()
 {
-	if(! this->_currentToken->isOperator())
-		return nullptr;
-
 	Node* op = new Node(nodeType::Op);
+
+	if(! this->_currentToken->isOperator())
+		return op;
+
 	addLeaf(op, this->_currentToken->_type, nodeType::Op);
 
 	return op;
@@ -344,15 +345,18 @@ void Parser::parseError() {
 };
 
 void Parser::addNode(Node* parent, Node* child, bool optional) {
-	if (child == nullptr && !optional)
+	if (child->_isEps && !optional)
 		parseError();
-	if(child != nullptr)
-		parent->_children.push_back(child);
+	if (!child->_isEps)
+		parent->_isEps = false;
+	parent->_children.push_back(child);
 }
 
 void Parser::addLeaf(Node* parent, TType expectedTokenType, nodeType nodeType) {
 	if (this->_currentToken->_type != expectedTokenType)
 		parseError();
+
+	parent->_isEps = false;
 
 	parent->_children.push_back((Leaf*) new Leaf(this->_currentToken, nodeType));
 	this->_currentToken = this->_scanner->nextToken();

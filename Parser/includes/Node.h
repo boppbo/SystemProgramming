@@ -94,6 +94,7 @@ enum OpType {
 class Node {
 
 public:
+	bool _isEps = true;
 	nodeType _type;
 	OpType _opType;
 	vector<Node*> _children;

@@ -3,11 +3,8 @@
     "",
     "\\Parser",
     "\\Parser\\includes",
-    "\\Parser\\src",
-    "\\Scanner\\includes",
-    "\\Scanner\\src",
-    "\\Symboltable\\includes"
+    "\\Parser\\src"
   ],
-  "SelectedNode": "\\Parser\\src\\TestParser.cpp",
+  "SelectedNode": "\\Parser\\src\\SemanticCheck.cpp",
   "PreviewInSolutionExplorer": false
 }
