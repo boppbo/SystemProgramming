@@ -13,14 +13,19 @@
 class trackingDeque : public deque<char, true> {
 public:
 	trackingDeque() { }
-	virtual void push(char const * const newItem) override;
+	virtual void push(char const * const newItem) override {
+		deque<char, true>::push(newItem);
+		this->setCurrentNode(*this->getLastNode());
+	}
 
 protected:
 	void setCurrentNode(Node const &current) {
 		this->_currentNode = &current;
 		this->_currentPos = current._data;
 	}
-	Node const* getCurrentNode() const { return this->_currentNode; }
+	Node const* getCurrentNode() const {
+		return this->_currentNode;
+	}
 	char const*_currentPos = nullptr;
 
 private:

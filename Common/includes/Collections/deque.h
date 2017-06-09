@@ -8,6 +8,8 @@
 #ifndef DEQUE_H_
 #define DEQUE_H_
 
+#include <stdexcept>
+
 template<typename T, bool isArr = false>
 class deque {
 public:
@@ -23,14 +25,31 @@ public:
 	deque(deque const &src) = delete;
 	deque& operator= (deque const &src) = delete;
 
-	unsigned int getSize() { return this->_size; }
+	unsigned int getSize() const {
+		return this->_size;
+	}
 	virtual void push(T const * const newItem) {
 		this->_lastNode = new Node(newItem, this->_lastNode);
 		if (this->_firstNode == nullptr)
 			this->_firstNode = this->_lastNode;
 		this->_size++;
 	}
-	T const& operator[](unsigned int const index) const;
+	T const& operator[](unsigned int const index) const {
+		using std::out_of_range;
+		bool fromEnd = index > (this->_size / 2);
+
+		Node* ptr = fromEnd ? this->_lastNode : this->_firstNode;
+		for (unsigned int i = 0; (i < (fromEnd ? this->_size-index-1 : index)); i++) {
+			if (ptr == nullptr)
+				break;
+			ptr = fromEnd ? ptr->_prev : ptr->_next;
+		}
+
+		if (ptr == nullptr)
+			throw out_of_range("index");
+
+		return *ptr->_data;
+	}
 
 protected:
 	struct Node  {
