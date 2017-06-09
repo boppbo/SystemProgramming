@@ -21,7 +21,7 @@ public:
 	Scanner(Scanner const &src) = delete;
 	Scanner& operator= (Scanner const &src) = delete;
 
-	Token* nextToken();
+	Token const* nextToken();
 private:
 	Automat _automat;
 	Buffer _buffer;

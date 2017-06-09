@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 	ofstream out (argv[2]);
 
 	for(EVER) {
-		Token *t = scanner.nextToken();
+		auto *t = scanner.nextToken();
 
 		printToken(t, t->_type == TOKEN_UNKNOWN ? cerr : out);
 

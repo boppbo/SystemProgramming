@@ -17,7 +17,7 @@ Scanner::Scanner(char const* filename, Symboltable &st, unsigned int maxLexemLen
 		throw invalid_argument("maxLexemLength");
 }
 
-Token* Scanner::nextToken() {
+Token const* Scanner::nextToken() {
 	this->_tokenEndReached = false;
 	this->_currLexemPos = 0;
 	this->_currLexem[0] = '\0';
