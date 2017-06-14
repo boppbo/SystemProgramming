@@ -31,7 +31,7 @@ public:
 	Leaf(Leaf const &src) = delete;
 	Leaf& operator= (Leaf const &src) = delete;
 
-	virtual void accept(TreeVisitor &visitor) override;
+	virtual void accept(TreeVisitor *visitor) override;
 
 private:
 	void setOperationTypeFromToken();

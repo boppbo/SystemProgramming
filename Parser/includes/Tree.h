@@ -48,7 +48,7 @@ class Tree {
 public:
 	Tree(NType nodeType);
 	virtual ~Tree() {}
-	virtual void accept(class TreeVisitor &visitor) = 0;
+	virtual void accept(class TreeVisitor* visitor) = 0;
 	virtual char const * getTypeAsString() const;
 
 private:

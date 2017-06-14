@@ -20,8 +20,8 @@ Leaf::~Leaf() {
 	delete this->_token;
 }
 
-void Leaf::accept(TreeVisitor &visitor) {
-	visitor.visit(this);
+void Leaf::accept(TreeVisitor *visitor) {
+	visitor->visit(this);
 }
 
 void Leaf::setOperationTypeFromToken() {

@@ -35,9 +35,9 @@ int main(int argc, char *argv[]) {
 
 	try {
 		Tree* t = parser.parse();
-		t->accept(printTree);
-//		t->accept(checkType);
-		t->accept(codeGeneration);
+		t->accept(&printTree);
+//		t->accept(&checkType);
+		t->accept(&codeGeneration);
 	}
 	catch(exception& e) {
 		cerr << e.what() << endl

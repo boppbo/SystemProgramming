@@ -12,8 +12,8 @@
 Node::Node(NType nodeType) : Tree(nodeType) {
 }
 
-void Node::accept(TreeVisitor &visitor) {
-	visitor.visit(this);
+void Node::accept(TreeVisitor *visitor) {
+	visitor->visit(this);
 }
 
 void Node::addChild(Tree* child) {

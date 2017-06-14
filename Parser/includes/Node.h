@@ -14,7 +14,7 @@
 class Node : public Tree {
 public:
 	Node(NType nodeType);
-	virtual void accept(TreeVisitor &visitor) override;
+	virtual void accept(TreeVisitor *visitor) override;
 
 	virtual void addChild(Tree* child);
 	virtual Tree* getChild(unsigned int index) const;
