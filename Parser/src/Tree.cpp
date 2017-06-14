@@ -10,6 +10,10 @@
 Tree::Tree(NType nodeType) : _nodeType(nodeType) {
 }
 
+NType Tree::getType() const {
+	return this->_nodeType;
+}
+
 char const * Tree::getTypeAsString() const {
 	return _nodeTypes[this->_nodeType];
 }
