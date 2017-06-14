@@ -32,6 +32,7 @@ public:
 	Leaf& operator= (Leaf const &src) = delete;
 
 	virtual void accept(TreeVisitor *visitor) override;
+	virtual Token const& getToken() const;
 
 private:
 	void setOperationTypeFromToken();

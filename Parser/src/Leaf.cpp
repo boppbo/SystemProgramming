@@ -24,6 +24,10 @@ void Leaf::accept(TreeVisitor *visitor) {
 	visitor->visit(this);
 }
 
+Token const& Leaf::getToken() const {
+	return *this->_token;
+}
+
 void Leaf::setOperationTypeFromToken() {
 	switch (this->_token->_type) {
 				case TOKEN_PLUS:
