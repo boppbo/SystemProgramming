@@ -8,6 +8,7 @@
 #ifndef PARSER_INCLUDES_TREE_H_
 #define PARSER_INCLUDES_TREE_H_
 
+
 enum NType {
 	Prog,
 	Decls,
@@ -51,6 +52,9 @@ public:
 	virtual void accept(class TreeVisitor* visitor) = 0;
 	virtual char const * getTypeAsString() const;
 	virtual NType getType() const;
+	virtual void setType(NType type){
+		this->_nodeType = type;
+	};
 
 private:
 	static char const* const _nodeTypes[];

@@ -12,11 +12,18 @@
 
 class TreeVisitorTypeCheck: public TreeVisitor {
 public:
-	TreeVisitorTypeCheck() { }
+	TreeVisitorTypeCheck();
 	virtual ~TreeVisitorTypeCheck();
+	void check(Tree* tree);
+	virtual bool isInt(Node* node, int index);
+	virtual bool isArray(Node* node, int index);
+	virtual int getLine(Node* node, int index);
+	virtual int getColumn(Node* node, int index);
+	virtual const Token getToken(Node* node,int index);
+	virtual bool compType(Node* node,int index, NType type);
 
-	void visit(Leaf* leaf);
-	void visit(Node* node);
+	virtual void visit(Node* node);
+	virtual void visit(Leaf* leaf);
 };
 
 #endif /* PARSER_INCLUDES_TREEVISITORTYPECHECK_H_ */

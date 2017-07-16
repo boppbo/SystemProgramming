@@ -35,6 +35,9 @@ public:
 	char const * getUnknownReason() const {
 		return this->_unknownReason;
 	}
+	int getIntValue(){
+		return _integerValue;
+	}
 private:
 	char const * _unknownReason = nullptr;
 	static char const* const _tokenTypes[];

@@ -11,6 +11,7 @@
 #include "../includes/TreeVisitorCodeGeneration.h"
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
 using namespace std;
 
 int main(int argc, char *argv[]) {
@@ -36,7 +37,7 @@ int main(int argc, char *argv[]) {
 	try {
 		Tree* t = parser.parse();
 		t->accept(&printTree);
-//		t->accept(&checkType);
+		t->accept(&checkType);
 		t->accept(&codeGeneration);
 	}
 	catch(exception& e) {

@@ -33,11 +33,11 @@ public:
 
 	virtual void accept(TreeVisitor *visitor) override;
 	virtual Token const& getToken() const;
-
+	Token const* _token;
 private:
 	void setOperationTypeFromToken();
 	OpType _opType = OpType::INVALID;
-	Token const* _token;
+
 };
 
 #endif /* LEAF_H */
