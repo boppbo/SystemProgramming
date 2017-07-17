@@ -9,7 +9,7 @@ SUBDIRS = $(AUTOMATDIR) $(BUFFERDIR) $(COMMONDIR) $(SYMBOLTABLEDIR) $(SCANNERDIR
 SUBDIRSCLEAN = $(addprefix clean,$(SUBDIRS))
 .PHONY: all clean $(SUBDIRS) $(SUBDIRSCLEAN)
 
-all: $(SUBDIRS)
+all:	$(SUBDIRS)
 $(SUBDIRS): Common
 	$(shell mkdir -p $(@)/$(OBJDIR))
 	$(shell mkdir -p $(@)/$(BINDIRTEST))

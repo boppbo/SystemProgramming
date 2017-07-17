@@ -38,11 +38,11 @@ int main(int argc, char *argv[]) {
 		Tree* t = parser.parse();
 		t->accept(&printTree);
 		t->accept(&checkType);
-		t->accept(&codeGeneration);
+		//t->accept(&codeGeneration);
 	}
 	catch(exception& e) {
 		cerr << e.what() << endl
-			 << "stop" << endl;
+			 << "stopasd" << endl;
 		return EXIT_FAILURE;
 	}
 

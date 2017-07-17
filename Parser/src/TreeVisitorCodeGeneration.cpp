@@ -8,6 +8,7 @@
 #include "../includes/TreeVisitorCodeGeneration.h"
 #include "../../Common/includes/cstring.h"
 #include <stdexcept>
+#include <stdio.h>
 
 TreeVisitorCodeGeneration::TreeVisitorCodeGeneration(std::ostream& codeOut) : _code(codeOut) {
 }

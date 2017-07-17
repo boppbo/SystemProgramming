@@ -5,7 +5,7 @@ using namespace std;
 
 #define EVER ;;
 
-void printToken(Token* t, ostream &str) {
+void printToken(const Token* t, ostream &str) {
 	str << "Token " << left << setw(20) << t->getTypeAsString();
 	str << " Line: " << t->_line;
 	str << " Column: " << t->_column;
@@ -54,3 +54,4 @@ int main(int argc, char *argv[]) {
 	out.close();
 	return EXIT_SUCCESS;
 }
+
