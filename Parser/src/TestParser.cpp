@@ -16,7 +16,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 	if (argc != 4) {
-		cerr << "Invalid arguments! Usage: " << argv[0] << " source.txt -c source.code" << endl;
+		cout << "Invalid arguments! Usage: " << argv[0] << " source.txt -c source.code" << endl;
 		return EXIT_FAILURE;
 	}
 
@@ -37,12 +37,13 @@ int main(int argc, char *argv[]) {
 	try {
 		Tree* t = parser.parse();
 		t->accept(&printTree);
-		t->accept(&checkType);
-		//t->accept(&codeGeneration);
+		//t->accept(&checkType);
+		checkType.check(t);
+		t->accept(&codeGeneration);
 	}
 	catch(exception& e) {
-		cerr << e.what() << endl
-			 << "stopasd" << endl;
+		cout << e.what() << endl
+			 << "exit" << endl;
 		return EXIT_FAILURE;
 	}
 

@@ -10,6 +10,7 @@
 #include <stdexcept>
 
 TreeVisitorTypeCheck::TreeVisitorTypeCheck() {
+
 }
 
 TreeVisitorTypeCheck::~TreeVisitorTypeCheck() {
@@ -23,6 +24,7 @@ void TreeVisitorTypeCheck::check(Tree* tree) {
 void TreeVisitorTypeCheck::visit(Node* node) {
 	switch (node->getType()) {
 	case NType::Prog: {
+		//std::cout << "Prog" << std::endl;
 		if (!node->isEpsilon()) {
 			node->getChild(0)->accept(this);
 			node->getChild(1)->accept(this);
@@ -31,19 +33,24 @@ void TreeVisitorTypeCheck::visit(Node* node) {
 		break;
 	}
 	case NType::Decls: {
+		//std::cout << "Decls" << std::endl;
 		if (!node->isEpsilon()) {
 			node->getChild(0)->accept(this);
-			node->getChild(1)->accept(this);
+			//std::cout << "DeclsC0" << std::endl;
+			node->getChild(2)->accept(this);
+			//std::cout << "DeclsC1" << std::endl;
 		}
 		node->setType(NType::NoType);
 		break;
 	}
 	case NType::Decl: {
-
+		//std::cout << "Decl" << std::endl;
 		node->getChild(1)->accept(this);
 		if (node->getChild(1)->getType() == NType::arrayType) {
 			if (isArray(node, 2) || isInt(node, 2)) {
 				node->setType(NType::ERROR);
+				std::cerr << "Error in Line: " << getLine(node, 2) << std::endl;
+				std::cerr << "Error in Column: " << getColumn(node, 2) << std::endl;
 				throw std::domain_error("identifier already defined");
 			} else {
 				dynamic_cast<Leaf*>(node->getChild(2))->getToken()._info->setIsArray(true);
@@ -58,14 +65,14 @@ void TreeVisitorTypeCheck::visit(Node* node) {
 		break;
 	}
 	case NType::Array: {
+		//std::cout << "Array" << std::endl;
 		if (!node->isEpsilon()) {
 			if (getToken(node, 1)._integerValue > 0) {
 				node->setType(NType::arrayType);
 			} else {
 				node->setType(NType::ERROR);
-				std::cerr << "Error in Line: " << getLine(node, 1) << std::endl;
-				std::cerr << "Error in Column: " << getColumn(node, 1)
-						<< std::endl;
+				std::cout << "Error in Line: " << getLine(node, 1) << std::endl;
+				std::cout << "Error in Column: " << (getColumn(node, 1)) << std::endl;
 				throw std::domain_error("no valid dimension");
 			}
 
@@ -75,6 +82,7 @@ void TreeVisitorTypeCheck::visit(Node* node) {
 		break;
 	}
 	case NType::Statements: {
+		//std::cout << "Statements" << std::endl;
 		if (!node->isEpsilon()) {
 			node->getChild(0)->accept(this);
 			node->getChild(2)->accept(this);
@@ -83,47 +91,52 @@ void TreeVisitorTypeCheck::visit(Node* node) {
 		break;
 	}
 	case NType::StatementIdent: {
+		//std::cout << "StatementIdent" << std::endl;
 		node->getChild(3)->accept(this);
 		node->getChild(1)->accept(this);
-		if (!isInt(node, 0) & !isArray(node, 0)) {
-			std::cerr << "Error in Line: " << getLine(node, 0) << std::endl;
-			std::cerr << "Error in Column: " << getColumn(node, 0) << std::endl;
-			throw std::domain_error("identifier not defined");
+		if (!isInt(node, 0) && !isArray(node, 0)) {
+			std::cout << "Error in Line: " << getLine(node, 0) << std::endl;
+			std::cout << "Error in Column: " << getColumn(node, 0) << std::endl;
 			node->setType(NType::ERROR);
+			throw std::domain_error("identifier not defined");
+
 		} else if (compType(node, 3, NType::intType) && (
 						(isInt(node, 0) && compType(node, 1, NType::NoType))
-						|| (isInt(node, 0) && compType(node, 1, NType::arrayType)))) {
+						|| (isArray(node, 0) && compType(node, 1, NType::arrayType)))) {
 			node->setType(NType::NoType);
 		} else {
-			std::cerr << "Error in Line: " << getLine(node, 0) << std::endl;
-			std::cerr << "Error in Column: " << getColumn(node, 0) << std::endl;
-			std::cerr << "Type: " << (isInt(node, 0) ? "Int" : "-")
+			std::cout << "Error in Line: " << getLine(node, 0) << std::endl;
+			std::cout << "Error in Column: " << getColumn(node, 0) << std::endl;
+			std::cout << "Type: " << (isInt(node, 0) ? "Int" : "-")
 					<< std::endl;
-			throw std::domain_error("incompatible types");
 			node->setType(NType::ERROR);
+			throw std::domain_error("incompatible types");
+
 		}
 		break;
 	}
 	case NType::StatementWrite: {
+		//std::cout << "StatementWrite" << std::endl;
 		node->getChild(2)->accept(this);
 		node->setType(NType::NoType);
 		break;
 	}
 	case NType::StatementRead: {
+		//std::cout << "StatementRead" << std::endl;
 		node->getChild(3)->accept(this);
 
 		if (!isInt(node, 2) && !isArray(node, 2)) {
-			std::cerr << "Error in Line: " << getLine(node, 2) << std::endl;
-			std::cerr << "Error in Column: " << getColumn(node, 2) << std::endl;
+			std::cout << "Error in Line: " << getLine(node, 2) << std::endl;
+			std::cout << "Error in Column: " << getColumn(node, 2) << std::endl;
 			throw std::domain_error("identifier not defined");
 			node->setType(NType::ERROR);
 		} else if ((isInt(node, 2) && compType(node, 3, NType::NoType))
 						|| (isArray(node, 2) && compType(node, 3, NType::arrayType))) {
 			node->setType(NType::NoType);
 		} else {
-			std::cerr << "Error in Line: "
+			std::cout << "Error in Line: "
 					<< getLine(node, 2) << std::endl;
-			std::cerr << "Error in Column: "
+			std::cout << "Error in Column: "
 					<< getColumn(node, 2)
 					<< std::endl;
 			throw std::domain_error("incompatible types");
@@ -132,11 +145,13 @@ void TreeVisitorTypeCheck::visit(Node* node) {
 		break;
 	}
 	case NType::StatementBlock: {
+		//std::cout << "StatementBlock" << std::endl;
 		node->getChild(1)->accept(this);
 		node->setType(NType::NoType);
 		break;
 	}
 	case NType::StatementIf: {
+		//std::cout << "StatementIf" << std::endl;
 		node->getChild(2)->accept(this);
 		node->getChild(4)->accept(this);
 		node->getChild(6)->accept(this);
@@ -148,6 +163,7 @@ void TreeVisitorTypeCheck::visit(Node* node) {
 		break;
 	}
 	case NType::StatementWhile: {
+		//std::cout << "StatementWhile" << std::endl;
 		node->getChild(2)->accept(this);
 		node->getChild(4)->accept(this);
 		if (compType(node, 2, NType::ERROR)) {
@@ -158,6 +174,7 @@ void TreeVisitorTypeCheck::visit(Node* node) {
 		break;
 	}
 	case NType::Index: {
+		//std::cout << "Index" << std::endl;
 		if (!node->isEpsilon()) {
 			node->getChild(1)->accept(this);
 			if (compType(node, 1, NType::ERROR)) {
@@ -171,6 +188,7 @@ void TreeVisitorTypeCheck::visit(Node* node) {
 		break;
 	}
 	case NType::Exp: {
+		//std::cout << "Exp" << std::endl;
 		node->getChild(0)->accept(this);
 		node->getChild(1)->accept(this);
 		if (compType(node, 1, NType::NoType)) {
@@ -183,15 +201,17 @@ void TreeVisitorTypeCheck::visit(Node* node) {
 		break;
 	}
 	case NType::Exp2: {
+		//std::cout << "Exp2" << std::endl;
 		node->getChild(1)->accept(this);
 		node->setType(node->getChild(1)->getType());
 		break;
 	}
 	case NType::Exp2Ident: {
+		//std::cout << "Exp2Ident" << std::endl;
 		node->getChild(1)->accept(this);
 		if (!isInt(node, 0) && !isArray(node, 0)) {
-			std::cerr << "Error in Line: " << getLine(node, 0) << std::endl;
-			std::cerr << "Error in Column: " << getColumn(node, 0) << std::endl;
+			std::cout << "Error in Line: " << getLine(node, 0) << std::endl;
+			std::cout << "Error in Column: " << getColumn(node, 0) << std::endl;
 			throw std::domain_error("identifier not defined");
 			node->setType(NType::ERROR);
 		} else if (isInt(node, 0) && compType(node, 1, NType::NoType)) {
@@ -199,23 +219,26 @@ void TreeVisitorTypeCheck::visit(Node* node) {
 		} else if (isArray(node, 0) && compType(node, 1, NType::arrayType)) {
 			node->setType(NType::intType);
 		} else {
-			std::cerr << "Error in Line: " << getLine(node, 0) << std::endl;
-			std::cerr << "Error in Column: " << getColumn(node, 0) << std::endl;
+			std::cout << "Error in Line: " << getLine(node, 0) << std::endl;
+			std::cout << "Error in Column: " << getColumn(node, 0) << std::endl;
 			throw std::domain_error("no primitive Type");
 			node->setType(NType::ERROR);
 		}
 		break;
 	}
 	case NType::Exp2Int: {
+		//std::cout << "Exp2Int" << std::endl;
 		node->setType(NType::intType);
 		break;
 	}
 	case NType::Exp2Minus: {
+		//std::cout << "Exp2Minus" << std::endl;
 		node->getChild(1)->accept(this);
 		node->setType(node->getChild(1)->getType());
 		break;
 	}
 	case NType::Exp2Neg: {
+		//std::cout << "Exp2Neg" << std::endl;
 		node->getChild(1)->accept(this);
 		if (!compType(node, 1, NType::intType)) {
 			node->setType(NType::ERROR);
@@ -225,6 +248,7 @@ void TreeVisitorTypeCheck::visit(Node* node) {
 		break;
 	}
 	case NType::OpExp: {
+		//std::cout << "OpExp" << std::endl;
 		if (!node->isEpsilon()) {
 			node->getChild(0)->accept(this);
 			node->getChild(1)->accept(this);
@@ -244,12 +268,11 @@ void TreeVisitorTypeCheck::visit(Node* node) {
 }
 
 void TreeVisitorTypeCheck::visit(Leaf* leaf) {
-
 }
-bool compType(Node* node,int index, NType type) {
+bool TreeVisitorTypeCheck::compType(Node* node,int index, NType type) {
 	return node->getChild(index)->getType() == type;
 }
-const Token getToken(Node* node,int index){
+const Token TreeVisitorTypeCheck::getToken(Node* node,int index){
 	return dynamic_cast<Leaf*>(node->getChild(index))->getToken();
 }
 

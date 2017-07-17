@@ -22,8 +22,8 @@ public:
 	virtual const Token getToken(Node* node,int index);
 	virtual bool compType(Node* node,int index, NType type);
 
-	virtual void visit(Node* node);
-	virtual void visit(Leaf* leaf);
+	virtual void visit(Node* node) override;
+	virtual void visit(Leaf* leaf) override;
 };
 
 #endif /* PARSER_INCLUDES_TREEVISITORTYPECHECK_H_ */

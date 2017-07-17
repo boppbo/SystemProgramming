@@ -1,6 +1,7 @@
 #include "../includes/Scanner.h"
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
 using namespace std;
 
 #define EVER ;;
@@ -43,7 +44,7 @@ int main(int argc, char *argv[]) {
 	for(EVER) {
 		auto *t = scanner.nextToken();
 
-		printToken(t, t->_type == TOKEN_UNKNOWN ? cerr : out);
+		printToken(t, t->_type == TOKEN_UNKNOWN ? cout : out);
 
 		if (t->_type == TOKEN_EOF)
 			break;
