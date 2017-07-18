@@ -22,8 +22,6 @@ char const* const Tree::_nodeTypes[] = {
 	"Prog",
 	"Decls",
 	"Decl",
-	"DeclArray",
-	"DeclIdent",
 	"Array",
 	"Statements",
 	"StatementIdent",
@@ -41,12 +39,7 @@ char const* const Tree::_nodeTypes[] = {
 	"Index",
 	"OpExp",
 	"Op",
-	"Nil",
-	"leaf",
 	"Keyword",
 	"INTEGER",
 	"Identifier",
-	"IdentifierUsed",
-	"NOTYPE",
-	"ERROR"
 };

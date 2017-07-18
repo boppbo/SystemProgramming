@@ -11,19 +11,6 @@
 #include "Tree.h"
 #include "../../Symboltable/includes/Token.h"
 
-enum OpType {
-	opPlus,
-	opMinus,
-	opMult,
-	opDiv,
-	opLess,
-	opGreater,
-	opEqual,
-	opUnEqual,
-	opAnd,
-	INVALID
-};
-
 class Leaf: public Tree {
 public:
 	Leaf(Token const* token, NType nodeType);
@@ -35,8 +22,6 @@ public:
 	virtual Token const& getToken() const;
 
 private:
-	void setOperationTypeFromToken();
-	OpType _opType = OpType::INVALID;
 	Token const* _token;
 };
 

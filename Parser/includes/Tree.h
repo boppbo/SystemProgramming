@@ -12,8 +12,6 @@ enum NType {
 	Prog,
 	Decls,
 	Decl,
-	DeclArray,
-	DeclIdent,
 	Array,
 	Statements,
 	StatementIdent,
@@ -31,17 +29,9 @@ enum NType {
 	Index,
 	OpExp,
 	Op,
-	Nil,
-	leaf,
 	Keyword,
 	INTEGER,
 	Identifier,
-	IdentifierUsed,
-	NoType,
-	intType,
-	intArrayType,
-	arrayType,
-	ERROR
 };
 
 class Tree {
