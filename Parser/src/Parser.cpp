@@ -105,6 +105,7 @@ Node* Parser::statement() {
 			return statementIf();
 		case TOKEN_WHILE:
 			return statementWhile();
+		case TOKEN_BRACKETS1_CLOSE:
 		case TOKEN_EOF:
 			return nullptr;
 		default:
