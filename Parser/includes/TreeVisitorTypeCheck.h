@@ -21,6 +21,7 @@ public:
 	virtual int getColumn(Node* node, int index);
 	virtual const Token getToken(Node* node,int index);
 	virtual bool compType(Node* node,int index, NType type);
+	virtual void printError(Node* node, int index);
 
 	virtual void visit(Node* node) override;
 	virtual void visit(Leaf* leaf) override;

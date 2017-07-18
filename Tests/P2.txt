@@ -1,0 +1,9 @@
+int a;
+int b;
+int c;
+
+write(5);
+read(a);
+
+int b;
+b := 5;
