@@ -219,6 +219,9 @@ void TreeVisitorCodeGeneration::statementIf(Node *node) {
 	node->getChild(6)->accept(this);
 
 	this->addLabeledCommand(endLabel, "NOP");
+
+	delete[] elseLabel;
+	delete[] endLabel;
 }
 void TreeVisitorCodeGeneration::statementWhile(Node *node) {
 	// expect "while"
@@ -235,6 +238,9 @@ void TreeVisitorCodeGeneration::statementWhile(Node *node) {
 	node->getChild(4)->accept(this);
 	this->addCommand("JMP", startLabel);
 	this->addLabeledCommand(endLabel, "NOP");
+
+	delete[] startLabel;
+	delete[] endLabel;
 }
 
 void TreeVisitorCodeGeneration::expression(Node *node)
@@ -344,5 +350,5 @@ void TreeVisitorCodeGeneration::addLabeledCommand(char const * const jumpLabel, 
 }
 
 char const * TreeVisitorCodeGeneration::getNextLabel() {
-	return ("#label" + std::to_string(this->_labelId++)).c_str();
+	return strdup(("#label" + std::to_string(this->_labelId++)).c_str());
 }
