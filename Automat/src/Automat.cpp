@@ -23,6 +23,7 @@ action Automat::charEval(unsigned char c) {
 		case '*': return this->stateEval(STAR);
 		case '=': return this->stateEval(EQUALS);
 		case '&': return this->stateEval(AND);
+		case '	':
 		case ' ': return this->stateEval(SPACE);
 		case '\n': return this->stateEval(NEW_LINE);
 	}
