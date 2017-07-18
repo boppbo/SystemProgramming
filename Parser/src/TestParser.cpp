@@ -35,8 +35,11 @@ int main(int argc, char *argv[]) {
 
 	try {
 		Tree* t = parser.parse();
+#ifdef DEBUG
+		//print tree only for debug
 		t->accept(&printTree);
-//		t->accept(&checkType);
+#endif
+		t->accept(&checkType);
 		t->accept(&codeGeneration);
 	}
 	catch(exception& e) {
